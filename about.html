@@ -1,252 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Destnly – Find the connection meant for you</title>
-    <meta name="description" content="Learn about Destnly's mission to make dating more meaningful with compatibility-first experiences, trust, and respect.">
-
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" href="assets/images/logo.png">
-    <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="application-name" content="Destnly">
-    <meta name="apple-mobile-web-app-title" content="Destnly">
-    <meta name="theme-color" content="#8b7cf6">
-
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    </noscript>
-
-    <style>
-         :root {
-            --accent: #8b7cf6;
-            --accent-dark: #6f63e6;
-            --text: #1f2937;
-            --muted: #6b7280;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-        
-        body {
-            font-family: Inter, system-ui;
-            color: #1f2937;
-            background: #f6f2ff;
-            overflow-x: hidden;
-        }
-
-        .page-bg {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient( to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.75)), url("assets/images/hero-bg.png") center/cover no-repeat;
-            z-index: -2;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        /* ---------- NAV ---------- */
-        
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 50;
-            background: rgba(168, 128, 222, 0.8);
-            backdrop-filter: blur(14px);
-        }
-        
-        .nav-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo img {
-            height: 38px;
-            width: auto;
-            border-radius: 12px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-        
-        .logo-text {
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: #6f63e6;
-            letter-spacing: 0.5px;
-            line-height: 1;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 26px;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #374151;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 10px;
-            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #31295c;
-            background: rgba(111, 99, 230, 0.12);
-        }
-        
-        .nav-links a.active {
-            background: #fff;
-            color: #4d3fbe;
-            box-shadow: 0 6px 16px rgba(111, 99, 230, 0.18);
-        }
-        
-        .nav-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 999px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        /* ---------- CONTENT ---------- */
-        
-        .content {
-            max-width: 800px;
-            margin: 120px auto 180px;
-            padding: 40px 24px;
-            text-align: center;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(139, 124, 246, 0.08);
-        }
-        
-        .content h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: #6f63e6;
-        }
-        
-        .content p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #374151;
-            margin-bottom: 16px;
-        }
-        
-        @media (max-width: 900px) {
-            .content {
-                margin: 72px 16px 96px;
-                padding: 32px 20px;
-            }
-            .content h1 {
-                font-size: clamp(2rem, 6vw, 2.5rem);
-            }
-        }
-        
-        @media (max-width: 720px) {
-            .nav-inner {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 10px 6px;
-            }
-            .logo {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 8px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-            }
-            .nav-links a {
-                font-size: 15px;
-                min-width: 82px;
-                padding: 7px 10px;
-            }
-            .content {
-                margin: 132px 12px 72px;
-                padding: 24px 14px;
-            }
-            .content p {
-                font-size: 16px;
-                line-height: 1.55;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo img {
-                height: 32px;
-            }
-            .logo-text {
-                font-size: 1.12rem;
-            }
-            .nav-links a {
-                font-size: 14px;
-                min-width: 72px;
-                padding: 6px 8px;
-            }
-            .content h1 {
-                font-size: 1.7rem;
-                margin-bottom: 16px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Destnly — Destnly</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--lav-lightest:#F7F5FF;--lav-light:#EDE9FE;--lav-mid:#C4B5FD;--lav-main:#8B5CF6;--lav-deep:#5B21B6;--lav-dark:#2E1065;--lav-soft:#DDD6FE;--text:#1E1433;--muted:#6B5B8C}
+    body{background:var(--lav-lightest);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:var(--lav-dark);border-bottom:1px solid rgba(255,255,255,0.08)}
+    .nav-logo-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-decoration:none}
+    .nav-logo-img{height:38px;width:auto}
+    .nav-logo-sub{font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-weight:500}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.85rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--lav-mid)}
+    .nav-cta{background:linear-gradient(135deg,var(--lav-main),var(--lav-mid));color:white;padding:0.6rem 1.5rem;border-radius:2rem;text-decoration:none;font-size:0.83rem;font-weight:600;box-shadow:0 4px 16px rgba(139,92,246,0.4);transition:transform 0.2s}
+    .nav-cta:hover{transform:translateY(-1px)}
+    .page-wrap{max-width:860px;margin:0 auto;padding:8rem 2rem 5rem}
+    .page-card{background:white;border-radius:1.5rem;padding:3rem;box-shadow:0 4px 28px rgba(139,92,246,0.08);border:1.5px solid var(--lav-soft)}
+    footer{background:var(--lav-dark);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    footer p{font-size:0.76rem;color:rgba(255,255,255,0.28)}
+    footer a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem;margin-left:1.4rem;transition:color 0.2s}
+    footer a:hover{color:var(--lav-mid)}
+    @media(max-width:760px){nav{padding:1rem 1.4rem}.nav-links{display:none}.page-wrap{padding:6rem 1rem 3rem}.page-card{padding:1.8rem 1.2rem}footer{padding:2rem 1.4rem}div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+  </style>
 </head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
+    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html" class="">Features</a></li>
+    <li><a href="safety.html" class="">Safety</a></li>
+    <li><a href="about.html" class="">About</a></li>
+    <li><a href="careers.html" class="">Careers</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
+</nav>
 
-<body id="top">
-    <div class="page-bg"></div>
-    <nav>
-        <div class="nav-inner">
-            <div class="logo">
-                <a class="logo-link" href="index.html#top" aria-label="Destnly Home">
-                    <img src="assets/images/destnly_logo_no_bg.png" alt="Destnly" width="879" height="751">
-                    <span class="logo-text">Destnly</span>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html#top">Home</a>
-                <a href="features.html">Features</a>
-                <a href="about.html" class="active" aria-current="page">About</a>
-                <a href="safety.html">Safety</a>
-                <a href="careers.html">Careers</a>
-            </div>
-        </div>
-    </nav>
+<div class="page-wrap">
+  <div class="page-card">
+    <h1 style="font-family:Playfair Display,serif;font-size:2.4rem;font-weight:700;color:var(--lav-dark);margin-bottom:1.2rem">About Destnly</h1>
+<p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:1rem">Destnly was created to make modern dating feel less exhausting and more human. We believe meaningful connections happen when people feel comfortable, respected, and understood.</p>
+<p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:1rem">Our technology quietly improves your experience in the background, helping you discover people you are more likely to connect with — without turning dating into a game.</p>
+<p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:2rem">Destnly is a product of <strong style="color:var(--lav-dark)">Nexquard Technology Pvt Ltd</strong>, a company focused on building human-first digital products. Every decision is guided by one question: does this make people&apos;s lives genuinely better?</p>
+<div style="background:linear-gradient(135deg,var(--lav-main),var(--lav-deep));border-radius:1.2rem;padding:2rem;color:white;text-align:center">
+  <p style="font-family:Playfair Display,serif;font-size:1.4rem;font-style:italic;opacity:0.95;line-height:1.5">&ldquo;Where every story finds its beginning.&rdquo;</p>
+  <p style="font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;opacity:0.55;margin-top:0.8rem">— The Destnly Promise</p>
+</div>
+  </div>
+</div>
 
-    <div class="content">
-        <h1>About Destnly</h1>
-
-        <p>
-            Destnly was created to make modern dating feel less exhausting and more human. We believe meaningful connections happen when people feel comfortable, respected, and understood.
-        </p>
-
-        <p>
-            Our technology quietly improves your experience in the background, helping you discover people you're more likely to connect with, without turning dating into a game.
-        </p>
-    </div>
+<footer>
+  <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
+  <div>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="account-deletion.html">Account Deletion</a>
+    <a href="child-safety.html">Child Safety</a>
+  </div>
+</footer>
 </body>
-
 </html>

@@ -1,39 +1,108 @@
-<main>
-    <h1>Destnly Child Safety Standards</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Child Safety — Destnly</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--lav-lightest:#F7F5FF;--lav-mid:#C4B5FD;--lav-main:#8B5CF6;--lav-deep:#5B21B6;--lav-dark:#2E1065;--lav-soft:#DDD6FE;--text:#1E1433;--muted:#6B5B8C}
+    body{background:var(--lav-lightest);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:var(--lav-dark);border-bottom:1px solid rgba(255,255,255,0.08)}
+    .nav-logo-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-decoration:none}
+    .nav-logo-img{height:38px;width:auto}
+    .nav-logo-sub{font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-weight:500}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.85rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover{color:var(--lav-mid)}
+    .nav-cta{background:linear-gradient(135deg,var(--lav-main),var(--lav-mid));color:white;padding:0.6rem 1.5rem;border-radius:2rem;text-decoration:none;font-size:0.83rem;font-weight:600;box-shadow:0 4px 16px rgba(139,92,246,0.4)}
+    .page-wrap{max-width:780px;margin:0 auto;padding:8rem 2rem 5rem}
+    .page-card{background:white;border-radius:1.5rem;padding:3rem;box-shadow:0 4px 28px rgba(139,92,246,0.08);border:1.5px solid var(--lav-soft)}
+    .page-card h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--lav-dark);margin-bottom:1.5rem}
+    .page-card h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--lav-dark);margin:2rem 0 0.7rem}
+    .page-card p{font-size:0.92rem;line-height:1.8;color:var(--muted);margin-bottom:0.8rem}
+    .page-card ul{padding-left:1.4rem;margin-bottom:1rem}
+    .page-card li{font-size:0.92rem;line-height:1.75;color:var(--muted);margin-bottom:0.35rem}
+    .page-card a{color:var(--lav-main);text-decoration:underline}
+    .zero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--lav-main),var(--lav-deep));color:white;border-radius:0.7rem;padding:0.6rem 1.2rem;font-size:0.82rem;font-weight:700;letter-spacing:0.05em;margin-bottom:1.5rem}
+    .copy-note{font-size:0.78rem;color:rgba(107,91,140,0.5);margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--lav-soft)}
+    footer{background:var(--lav-dark);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    footer p{font-size:0.76rem;color:rgba(255,255,255,0.28)}
+    footer a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem;margin-left:1.4rem}
+    footer a:hover{color:var(--lav-mid)}
+    @media(max-width:760px){nav{padding:1rem 1.4rem}.nav-links{display:none}.page-wrap{padding:6rem 1rem 3rem}.page-card{padding:1.8rem 1.2rem}footer{padding:2rem 1.4rem}}
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
+    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html">Features</a></li>
+    <li><a href="safety.html">Safety</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-card">
+    <h1>Child Safety Standards</h1>
+    <div class="zero-badge">🛡 Zero Tolerance for CSAE/CSAM</div>
+
     <p>Destnly ("we", "our", "us") is committed to maintaining a safe environment for all users. We have zero tolerance for child sexual abuse and exploitation (CSAE) and child sexual abuse material (CSAM).</p>
+
     <h2>1. Age Requirement</h2>
     <p>Destnly is intended only for users aged 18 years and above. We do not allow minors to use the platform.</p>
     <p>If we become aware that an account belongs to a minor, we take appropriate action, including restricting access and removing the account.</p>
+
     <h2>2. Prohibited Content and Behavior</h2>
     <p>Destnly strictly prohibits any content or behavior that involves, promotes, depicts, or facilitates CSAE/CSAM, including but not limited to:</p>
     <ul>
-        <li>Any form of child sexual abuse material (CSAM)</li>
-        <li>Grooming, solicitation, or exploitation of minors</li>
-        <li>Sextortion, trafficking, or coercion involving minors</li>
-        <li>Any sexual content involving minors or content that sexualizes minors</li>
+      <li>Any form of child sexual abuse material (CSAM)</li>
+      <li>Grooming, solicitation, or exploitation of minors</li>
+      <li>Sextortion, trafficking, or coercion involving minors</li>
+      <li>Any sexual content involving minors or content that sexualizes minors</li>
     </ul>
+
     <h2>3. Reporting and User Feedback</h2>
-    <p>Users can report safety concerns directly within the app using the Report feature. Reports are reviewed and may result in action against the reported account/content.</p>
+    <p>Users can report safety concerns directly within the app using the Report feature. Reports are reviewed and may result in action against the reported account or content.</p>
     <p><strong>Users are encouraged to report any suspicious profiles, especially suspected underage users.</strong></p>
+
     <h2>4. Enforcement Actions</h2>
     <p>When we detect or receive reports involving CSAE/CSAM, we may take actions including:</p>
     <ul>
-        <li>Removing content</li>
-        <li>Suspending or permanently banning accounts</li>
-        <li>Preventing re-registration where possible</li>
-        <li>Preserving relevant information as required for investigation</li>
+      <li>Removing content</li>
+      <li>Suspending or permanently banning accounts</li>
+      <li>Preventing re-registration where possible</li>
+      <li>Preserving relevant information as required for investigation</li>
     </ul>
+
     <h2>5. Addressing CSAM and Legal Compliance</h2>
     <p>We take steps to combat CSAM and comply with applicable child safety laws. Where required, we may report suspected CSAE/CSAM to relevant regional or national authorities.</p>
+
     <h2>6. Child Safety Point of Contact</h2>
     <p>For child safety concerns or compliance inquiries, contact us at:</p>
     <p><strong>Email:</strong> <a href="mailto:support@destnly.com">support@destnly.com</a></p>
-    <hr>
-    <footer>
-        <h3>Policy Links</h3>
-        <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-        </ul>
-    </footer>
-</main>
+
+    <p class="copy-note">© 2026 Nexquard Technology Pvt Ltd. All rights reserved. &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a></p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
+  <div>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="account-deletion.html">Account Deletion</a>
+    <a href="child-safety.html">Child Safety</a>
+  </div>
+</footer>
+</body>
+</html>

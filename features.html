@@ -1,312 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features | Destnly</title>
-    <meta name="description" content="Explore Destnly features designed for meaningful dating: compatibility-first matching, verified profiles, and privacy-focused controls.">
-
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" href="assets/images/logo.png">
-    <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="application-name" content="Destnly">
-    <meta name="apple-mobile-web-app-title" content="Destnly">
-    <meta name="theme-color" content="#8b7cf6">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    </noscript>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    <style>
-        body {
-            font-family: Inter, system-ui;
-            color: #1f2937;
-            background: #f6f2ff;
-            overflow-x: hidden;
-        }
-        
-        .page-bg {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient( to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.75)), url("assets/images/hero-bg.png") center/cover no-repeat;
-            z-index: -2;
-        }
-        
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 50;
-            background: rgba(168, 128, 222, 0.8);
-            backdrop-filter: blur(14px);
-        }
-        
-        .nav-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo img {
-            height: 38px;
-            width: auto;
-            border-radius: 12px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-        }
-        
-        .logo-text {
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: #6f63e6;
-            letter-spacing: 0.5px;
-            line-height: 1;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 26px;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #374151;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 10px;
-            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #31295c;
-            background: rgba(111, 99, 230, 0.12);
-        }
-        
-        .nav-links a.active {
-            background: #fff;
-            color: #4d3fbe;
-            box-shadow: 0 6px 16px rgba(111, 99, 230, 0.18);
-        }
-        
-        .section {
-            padding: 120px 24px 180px;
-        }
-        
-        .section-inner {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(139, 124, 246, 0.08);
-            padding: 40px 24px;
-        }
-        
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        
-        .feature {
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(139, 124, 246, 0.08);
-            padding: 32px 28px;
-            min-width: 220px;
-            max-width: 320px;
-            flex: 1 1 220px;
-        }
-        
-        .feature h3 {
-            color: #8b7cf6;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-        
-        .feature p {
-            color: #6b7280;
-            font-size: 16px;
-        }
-    </style>
-    <style>
-        @media (max-width: 980px) {
-            .section-inner {
-                max-width: 94vw;
-                padding: 28px 16px;
-            }
-            .features {
-                gap: 18px;
-            }
-            .section-inner>h1 {
-                font-size: clamp(2rem, 6vw, 2.5rem);
-            }
-            .section-inner>h2 {
-                font-size: clamp(1.35rem, 4.5vw, 1.8rem) !important;
-            }
-            .section-inner>p {
-                font-size: 1rem !important;
-                margin-bottom: 20px !important;
-            }
-        }
-        
-        @media (max-width: 720px) {
-            .nav-inner {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 10px 6px;
-            }
-            .logo {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 8px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 10px;
-                justify-content: center;
-            }
-            .nav-links a {
-                font-size: 15px;
-                min-width: 82px;
-                padding: 7px 10px;
-            }
-            .nav-cta {
-                margin-top: 6px;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: center;
-                display: block;
-            }
-            .section {
-                padding: 132px 4vw 60px;
-            }
-            .section-inner {
-                padding: 22px 12px;
-            }
-            .features {
-                flex-direction: column;
-                align-items: center;
-                gap: 16px;
-                margin-top: 24px;
-            }
-            .feature {
-                min-width: 0;
-                width: 98vw;
-                max-width: 400px;
-                padding: 22px 10px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .features {
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 18px !important;
-                width: 100% !important;
-                max-width: 100vw !important;
-                margin: 0 auto !important;
-                padding: 0 !important;
-            }
-            .feature {
-                min-width: 0 !important;
-                width: 100% !important;
-                max-width: 420px !important;
-                margin: 0 auto !important;
-                border-radius: 16px !important;
-                padding: 18px 12px !important;
-                box-sizing: border-box !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo img {
-                height: 32px;
-            }
-            .logo-text {
-                font-size: 1.12rem;
-            }
-            .nav-links a {
-                font-size: 14px;
-                min-width: 72px;
-                padding: 6px 8px;
-            }
-            .feature {
-                max-width: 98vw !important;
-                padding: 12px 2vw !important;
-                border-radius: 10px !important;
-            }
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Features — Destnly</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--lav-lightest:#F7F5FF;--lav-light:#EDE9FE;--lav-mid:#C4B5FD;--lav-main:#8B5CF6;--lav-deep:#5B21B6;--lav-dark:#2E1065;--lav-soft:#DDD6FE;--text:#1E1433;--muted:#6B5B8C}
+    body{background:var(--lav-lightest);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:var(--lav-dark);border-bottom:1px solid rgba(255,255,255,0.08)}
+    .nav-logo-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-decoration:none}
+    .nav-logo-img{height:38px;width:auto}
+    .nav-logo-sub{font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-weight:500}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.85rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--lav-mid)}
+    .nav-cta{background:linear-gradient(135deg,var(--lav-main),var(--lav-mid));color:white;padding:0.6rem 1.5rem;border-radius:2rem;text-decoration:none;font-size:0.83rem;font-weight:600;box-shadow:0 4px 16px rgba(139,92,246,0.4);transition:transform 0.2s}
+    .nav-cta:hover{transform:translateY(-1px)}
+    .page-wrap{max-width:860px;margin:0 auto;padding:8rem 2rem 5rem}
+    .page-card{background:white;border-radius:1.5rem;padding:3rem;box-shadow:0 4px 28px rgba(139,92,246,0.08);border:1.5px solid var(--lav-soft)}
+    footer{background:var(--lav-dark);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    footer p{font-size:0.76rem;color:rgba(255,255,255,0.28)}
+    footer a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem;margin-left:1.4rem;transition:color 0.2s}
+    footer a:hover{color:var(--lav-mid)}
+    @media(max-width:760px){nav{padding:1rem 1.4rem}.nav-links{display:none}.page-wrap{padding:6rem 1rem 3rem}.page-card{padding:1.8rem 1.2rem}footer{padding:2rem 1.4rem}div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+  </style>
 </head>
-
 <body>
-    <div class="page-bg"></div>
-    <nav>
-        <div class="nav-inner">
-            <div class="logo">
-                <a class="logo-link" href="index.html#top" aria-label="Destnly Home">
-                    <img src="assets/images/destnly_logo_no_bg.png" alt="Destnly" width="879" height="751">
-                    <span class="logo-text">Destnly</span>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html#top">Home</a>
-                <a href="features.html" class="active" aria-current="page">Features</a>
-                <a href="about.html">About</a>
-                <a href="safety.html">Safety</a>
-                <a href="careers.html">Careers</a>
-            </div>
-        </div>
-    </nav>
-    <section class="section">
-        <div class="section-inner">
-            <h1>Features</h1>
-            <h2 style="margin-top:32px; font-size:2rem; color:#6f63e6;">Designed for meaningful connections</h2>
-            <p style="font-size:1.15rem; color:#374151; margin-bottom:32px;">Destnly is built for people who are serious about relationships. Every feature helps real connections grow.</p>
-            <div class="features" id="features">
-                <div class="feature">
-                    <h3>Compatibility-First Matching</h3>
-                    <p>Shared values and long-term intent.</p>
-                </div>
-                <div class="feature">
-                    <h3>Verified Profiles</h3>
-                    <p>Every profile is reviewed.</p>
-                </div>
-                <div class="feature">
-                    <h3>Meaningful Conversations</h3>
-                    <p>Prompts that spark depth.</p>
-                </div>
-                <div class="feature">
-                    <h3>Privacy by Design</h3>
-                    <p>You stay in control.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
+    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html" class="">Features</a></li>
+    <li><a href="safety.html" class="">Safety</a></li>
+    <li><a href="about.html" class="">About</a></li>
+    <li><a href="careers.html" class="">Careers</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
+</nav>
 
+<div class="page-wrap">
+  <div class="page-card">
+    <h1 style="font-family:Playfair Display,serif;font-size:2.4rem;font-weight:700;color:var(--lav-dark);margin-bottom:0.6rem">Features</h1>
+<p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:2rem">Designed for meaningful connections. Every feature helps real connections grow.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:1.6rem">
+    <div style="font-size:1.5rem;margin-bottom:0.7rem">✦</div>
+    <h3 style="font-family:Playfair Display,serif;font-size:1.08rem;color:var(--lav-dark);margin-bottom:0.4rem">Compatibility-First Matching</h3>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Shared values and long-term intent guide every recommendation.</p>
+  </div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:1.6rem">
+    <div style="font-size:1.5rem;margin-bottom:0.7rem">✓</div>
+    <h3 style="font-family:Playfair Display,serif;font-size:1.08rem;color:var(--lav-dark);margin-bottom:0.4rem">Verified Profiles</h3>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Every profile is reviewed to keep the community authentic and safe.</p>
+  </div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:1.6rem">
+    <div style="font-size:1.5rem;margin-bottom:0.7rem">💬</div>
+    <h3 style="font-family:Playfair Display,serif;font-size:1.08rem;color:var(--lav-dark);margin-bottom:0.4rem">Meaningful Conversations</h3>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Curated prompts that spark depth — no more awkward openers.</p>
+  </div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:1.6rem">
+    <div style="font-size:1.5rem;margin-bottom:0.7rem">🔒</div>
+    <h3 style="font-family:Playfair Display,serif;font-size:1.08rem;color:var(--lav-dark);margin-bottom:0.4rem">Privacy by Design</h3>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">You stay in full control of your visibility and data at all times.</p>
+  </div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:1.6rem">
+    <div style="font-size:1.5rem;margin-bottom:0.7rem">◎</div>
+    <h3 style="font-family:Playfair Display,serif;font-size:1.08rem;color:var(--lav-dark);margin-bottom:0.4rem">Intention-first Profiles</h3>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Share your values and what you are looking for — let the real you attract the right person.</p>
+  </div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:1.6rem">
+    <div style="font-size:1.5rem;margin-bottom:0.7rem">🤝</div>
+    <h3 style="font-family:Playfair Display,serif;font-size:1.08rem;color:var(--lav-dark);margin-bottom:0.4rem">Respect-driven Standards</h3>
+    <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Clear community guidelines and easy reporting tools for a welcoming space.</p>
+  </div>
+</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
+  <div>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="account-deletion.html">Account Deletion</a>
+    <a href="child-safety.html">Child Safety</a>
+  </div>
+</footer>
+</body>
 </html>
