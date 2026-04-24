@@ -1,1112 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destnly – Find the connection meant for you</title>
-    <meta name="description" content="Destnly helps you build meaningful relationships through compatibility-first matching, verified profiles, and trust-first design.">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <title>Destnly — Find the Connection Meant for You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" href="assets/images/logo.png">
-    <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="application-name" content="Destnly">
-    <meta name="apple-mobile-web-app-title" content="Destnly">
-    <meta name="theme-color" content="#8b7cf6">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="assets/images/hero-bg.png">
-    <link rel="preload" as="image" href="assets/images/phone2-optimized.png">
+    :root {
+      --lav-lightest: #F7F5FF;
+      --lav-light:    #EDE9FE;
+      --lav-mid:      #C4B5FD;
+      --lav-main:     #8B5CF6;
+      --lav-deep:     #5B21B6;
+      --lav-dark:     #2E1065;
+      --lav-soft:     #DDD6FE;
+      --text:         #1E1433;
+      --muted:        #6B5B8C;
+      --white:        #FFFFFF;
+    }
 
-    <!-- Font Awesome CDN for social icons (latest v6.5.2) -->
-    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    </noscript>
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--lav-lightest);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
 
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    </noscript>
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5rem;
+      background: var(--lav-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: box-shadow 0.3s;
+    }
+    .nav-logo-wrap { display: flex; align-items: center; text-decoration: none; flex-direction: column; align-items: flex-start; gap: 1px; }
+    .nav-logo-img { height: 38px; width: auto; display: block; }
+    .nav-logo-sub {
+      font-size: 0.6rem; letter-spacing: 0.13em; text-transform: uppercase;
+      color: rgba(255,255,255,0.38); font-weight: 500; font-family: 'Nunito', sans-serif;
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: rgba(255,255,255,0.6); font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--lav-mid); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--lav-main), var(--lav-mid));
+      color: white; padding: 0.6rem 1.5rem;
+      border-radius: 2rem; text-decoration: none;
+      font-size: 0.83rem; font-weight: 600; letter-spacing: 0.04em;
+      box-shadow: 0 4px 16px rgba(139,92,246,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(139,92,246,0.6); }
 
-    <style>
-        /* ------------------ MOBILE-FIRST RESPONSIVE FIXES ------------------ */
-        
-        @media (max-width: 768px) {
-            html,
-            body {
-                overflow-x: hidden !important;
-            }
-            .hero {
-                padding: 132px 4vw 38px;
-            }
-            .hero-inner {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 32px;
-            }
-            .hero h1 {
-                font-size: 1.45rem;
-                line-height: 1.18;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            .hero p {
-                font-size: 1.02rem;
-                text-align: center;
-                max-width: 98vw;
-            }
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                margin-top: 16px;
-            }
-            .store-buttons {
-                flex-direction: row;
-                justify-content: center;
-                gap: 8px;
-            }
-            .store-buttons img {
-                height: 32px;
-            }
-            .join-btn {
-                padding: 10px 18px;
-                font-size: 1rem;
-            }
-            .phone-stack {
-                width: 90vw;
-                max-width: 220px;
-                height: 180px;
-                margin: 0 auto;
-            }
-            .phone {
-                width: 90px;
-                border-radius: 10px;
-                left: 0 !important;
-                right: 0 !important;
-                margin: 0 auto;
-            }
-            .section {
-                padding: 38px 2vw;
-            }
-            .section-inner {
-                text-align: center;
-            }
-            .section h2 {
-                font-size: 1.08rem;
-                margin-bottom: 8px;
-            }
-            .section p {
-                font-size: 0.98rem;
-                margin-bottom: 28px;
-            }
-            .features {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .feature {
-                padding: 12px 6px;
-                border-radius: 10px;
-            }
-            .cta {
-                padding: 32px 2vw;
-            }
-            .cta h2 {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-            .cta p {
-                font-size: 0.98rem;
-                margin-bottom: 18px;
-            }
-            .footer-gradient-bridge {
-                height: 32px;
-                background: linear-gradient(to bottom, rgba(246, 242, 255, 0) 0%, #f6f2ff 40%, #23243a 100%);
-            }
-            footer {
-                padding: 32px 8px 18px 8px;
-                text-align: center;
-            }
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 18px;
-                padding: 18px 4px 8px 4px;
-            }
-            .footer-brand {
-                font-size: 1rem;
-                margin-bottom: 6px;
-            }
-            .footer-desc {
-                font-size: 0.92rem;
-                margin-top: 4px;
-            }
-            .footer-social {
-                gap: 8px;
-                margin-top: 10px;
-                justify-content: center;
-            }
-            .footer-social a {
-                width: 28px;
-                height: 28px;
-                font-size: 0.92rem;
-            }
-            .footer-col strong {
-                font-size: 0.98rem;
-                margin-bottom: 6px;
-            }
-            .footer-col a {
-                font-size: 0.92rem;
-                margin-bottom: 6px;
-            }
-            .footer-bottom {
-                font-size: 11px;
-                padding: 10px 0 4px 0;
-                margin-top: 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                padding: 124px 2vw 24px;
-            }
-            .hero h1 {
-                font-size: 1.08rem;
-                margin-bottom: 6px;
-            }
-            .hero p {
-                font-size: 0.92rem;
-            }
-            .phone-stack {
-                max-width: 120px;
-                height: 90px;
-            }
-            .phone {
-                width: 48px;
-                border-radius: 6px;
-            }
-            .section {
-                padding: 18px 1vw;
-            }
-            .section h2 {
-                font-size: 0.92rem;
-            }
-            .feature {
-                padding: 6px 2px;
-                border-radius: 6px;
-            }
-            .cta {
-                padding: 16px 1vw;
-            }
-            .cta h2 {
-                font-size: 0.92rem;
-            }
-            .footer-inner {
-                gap: 10px;
-                padding: 8px 2px 4px 2px;
-            }
-            .footer-brand {
-                font-size: 0.92rem;
-            }
-            .footer-desc {
-                font-size: 0.88rem;
-            }
-            .footer-social {
-                gap: 6px;
-                margin-top: 6px;
-            }
-            .footer-social a {
-                width: 22px;
-                height: 22px;
-                font-size: 0.82rem;
-            }
-            .footer-col strong {
-                font-size: 0.92rem;
-            }
-            .footer-col a {
-                font-size: 0.88rem;
-            }
-            .footer-bottom {
-                font-size: 10px;
-                padding: 6px 0 2px 0;
-            }
-        }
-        /* ------------------ RESPONSIVE FIXES ------------------ */
-        
-        @media (max-width: 1024px) {
-            .hero-inner {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 48px;
-            }
-            .hero {
-                padding: 64px 12px 80px;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-                text-align: center;
-                line-height: 1.18;
-            }
-            .hero p {
-                font-size: 1.08rem;
-                text-align: center;
-                max-width: 95vw;
-            }
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-                gap: 16px;
-                margin-top: 22px;
-            }
-            .store-buttons {
-                flex-direction: row;
-                justify-content: center;
-                gap: 12px;
-            }
-            .phone-stack {
-                width: 90vw;
-                max-width: 340px;
-                height: 400px;
-            }
-            .phone {
-                width: 180px;
-                border-radius: 22px;
-            }
-            .section {
-                padding: 70px 8px;
-            }
-            .section h2 {
-                font-size: 1.5rem;
-            }
-            .features {
-                gap: 18px;
-            }
-            .feature {
-                padding: 22px 12px;
-                border-radius: 18px;
-            }
-            .cta {
-                padding: 60px 8px;
-            }
-            .cta h2 {
-                font-size: 1.3rem;
-            }
-        }
-        
-        @media (max-width: 700px) {
-            .footer-inner {
-                grid-template-columns: 1fr;
-                gap: 24px;
-                padding: 32px 8px 18px 8px;
-            }
-            .footer-brand {
-                font-size: 1.1rem;
-            }
-            .footer-desc {
-                font-size: 0.95rem;
-            }
-            .footer-social {
-                gap: 10px;
-                margin-top: 14px;
-            }
-            .footer-social a {
-                width: 34px;
-                height: 34px;
-                font-size: 1rem;
-            }
-            .footer-col strong {
-                font-size: 1rem;
-            }
-            .footer-bottom {
-                font-size: 12px;
-                padding: 18px 0 8px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero {
-                padding: 124px 4vw 38px;
-            }
-            .hero h1 {
-                font-size: 1.3rem;
-                margin-bottom: 12px;
-            }
-            .hero p {
-                font-size: 0.98rem;
-            }
-            .phone-stack {
-                max-width: 220px;
-                height: 220px;
-            }
-            .phone {
-                width: 110px;
-                border-radius: 12px;
-            }
-            .section {
-                padding: 38px 2vw;
-            }
-            .section h2 {
-                font-size: 1.1rem;
-            }
-            .feature {
-                padding: 12px 6px;
-                border-radius: 10px;
-            }
-            .cta {
-                padding: 32px 2vw;
-            }
-            .cta h2 {
-                font-size: 1rem;
-            }
-        }
-        /* Social Media Footer Icons - Modern, Premium Style */
-        
-        .footer-social {
-            display: flex;
-            gap: 18px;
-            margin-top: 22px;
-            margin-bottom: 8px;
-        }
-        
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(140, 124, 246, 0.13);
-            color: #b4b8d1;
-            font-size: 1.35rem;
-            transition: background 0.22s cubic-bezier(.4, 0, .2, 1), color 0.22s cubic-bezier(.4, 0, .2, 1), box-shadow 0.22s cubic-bezier(.4, 0, .2, 1), transform 0.18s cubic-bezier(.4, 0, .2, 1);
-            outline: none;
-            border: none;
-        }
-        
-        .footer-social a:focus {
-            box-shadow: 0 0 0 2px #8b7cf6;
-        }
-        
-        .footer-social a:hover {
-            background: linear-gradient(135deg, #8b7cf6 0%, #b4b8d1 100%);
-            color: #fff;
-            transform: translateY(-3px) scale(1.12);
-            box-shadow: 0 4px 16px 0 rgba(140, 124, 246, 0.13);
-        }
-        
-        .footer-social a .fa-brands {
-            pointer-events: none;
-        }
-        
-        @media (max-width: 600px) {
-            .footer-social {
-                gap: 12px;
-                margin-top: 18px;
-            }
-            .footer-social a {
-                width: 38px;
-                height: 38px;
-                font-size: 1.1rem;
-            }
-        }
-        
-         :root {
-            --accent: #8b7cf6;
-            --accent-dark: #6f63e6;
-            --text: #1f2937;
-            --muted: #6b7280;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-        
-        body {
-            font-family: Inter, system-ui;
-            color: var(--text);
-            background: #f6f2ff;
-            overflow-x: hidden;
-        }
-        /* ---------- BACKGROUND LAYER ---------- */
-        
-        .page-bg {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient( to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.75)), url("assets/images/hero-bg.png") center/cover no-repeat;
-            z-index: -2;
-        }
-        /* ---------- NAV ---------- */
-        
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            z-index: 50;
-            background: rgba(168, 128, 222, 0.8);
-            backdrop-filter: blur(14px);
-            overflow-x: hidden;
-        }
-        
-        .nav-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo-text {
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: #6f63e6;
-            letter-spacing: 0.5px;
-            line-height: 1;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 26px;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #374151;
-            font-weight: 600;
-            display: inline-flex;
-            justify-content: center;
-            min-width: 96px;
-            text-align: center;
-            padding: 8px 12px;
-            border-radius: 10px;
-            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #31295c;
-            background: rgba(111, 99, 230, 0.12);
-        }
-        
-        .nav-links a.active {
-            background: #fff;
-            color: #4d3fbe;
-            box-shadow: 0 6px 16px rgba(111, 99, 230, 0.18);
-        }
-        
-        .nav-cta {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 999px;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        /* ---------- HERO ---------- */
-        
-        .hero {
-            padding: 120px 24px 180px;
-        }
-        
-        .hero-inner {
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 90px;
-            align-items: center;
-        }
-        
-        .hero h1 {
-            font-size: 54px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            color: var(--muted);
-            max-width: 520px;
-        }
-        
-        .hero-actions {
-            margin-top: 30px;
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-        
-        .store-buttons {
-            display: flex;
-            gap: 16px;
-        }
-        
-        .store-buttons img {
-            height: 48px;
-            filter: drop-shadow(0 12px 28px rgba(139, 124, 246, .35));
-            transition: .25s ease;
-        }
-        
-        .store-buttons img:hover {
-            transform: translateY(-4px);
-        }
-        
-        .join-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: #fff;
-            padding: 14px 26px;
-            border-radius: 999px;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 18px 40px rgba(139, 124, 246, .45);
-            transition: transform 0.25s cubic-bezier(.4, 1.5, .5, 1), box-shadow 0.25s;
-        }
-        
-        .join-btn:hover,
-        .join-btn:focus {
-            transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 28px 60px rgba(139, 124, 246, .55);
-        }
-        /* ---------- PHONES ---------- */
-        
-        .phone-stack {
-            position: relative;
-            width: 420px;
-            height: 520px;
-        }
-        
-        .phone {
-            position: absolute;
-            width: 280px;
-            border-radius: 32px;
-            box-shadow: 0 40px 90px rgba(0, 0, 0, .25);
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .phone.back {
-            left: 0;
-            top: 40px;
-            transform: none;
-            opacity: .95;
-        }
-        
-        .phone.front {
-            right: 0;
-            top: 0;
-            transform: none;
-            animation-delay: 1.5s;
-        }
-        
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-18px);
-            }
-        }
-        /* ---------- SECTION BLEND ---------- */
-        
-        .section {
-            padding: 160px 24px;
-            background: linear-gradient( to bottom, rgba(246, 242, 255, 0), rgba(246, 242, 255, 1), rgba(246, 242, 255, 0));
-        }
-        
-        .section-inner {
-            max-width: 1200px;
-            margin: auto;
-            text-align: center;
-        }
-        
-        .section h2 {
-            font-size: 38px;
-            margin-bottom: 14px;
-        }
-        
-        .section p {
-            color: var(--muted);
-            max-width: 720px;
-            margin: 0 auto 60px;
-        }
-        /* ---------- FEATURES ---------- */
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature {
-            background: rgba(255, 255, 255, .55);
-            backdrop-filter: blur(16px);
-            padding: 34px 26px;
-            border-radius: 28px;
-            box-shadow: 0 30px 80px rgba(139, 124, 246, .18);
-            transition: .3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 40px 110px rgba(139, 124, 246, .3);
-        }
-        
-        .feature h3 {
-            margin-bottom: 8px;
-        }
-        /* ---------- CTA ---------- */
-        
-        .cta {
-            padding: 140px 24px;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            font-size: 42px;
-            margin-bottom: 14px;
-        }
-        
-        .cta p {
-            color: var(--muted);
-            margin-bottom: 30px;
-        }
-        /* ---------- FOOTER ---------- */
-        
-        footer {
-            background: #18192a;
-            color: #e5e7eb;
-            padding: 64px 24px 40px 24px;
-            text-align: center;
-            font-size: 14px;
-            position: relative;
-            z-index: 10;
-            .footer-gradient-bridge {
-                height: 64px;
-                background: linear-gradient(to bottom, rgba(246, 242, 255, 0) 0%, #f6f2ff 40%, #23243a 100%);
-            }
-            footer {
-                background: #23243a;
-                color: #e5e7eb;
-                padding: 0 0 0 0;
-                font-size: 15px;
-                letter-spacing: 0.01em;
-            }
-            .footer-inner {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 64px 24px 32px 24px;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-                gap: 48px;
-            }
-            .footer-brand {
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: #fff;
-                margin-bottom: 10px;
-            }
-            .footer-desc {
-                color: #b4b8d1;
-                font-size: 1rem;
-                margin-top: 8px;
-                line-height: 1.6;
-            }
-            .footer-col strong {
-                color: #fff;
-                font-size: 1.08em;
-                font-weight: 600;
-                margin-bottom: 10px;
-                display: block;
-                letter-spacing: 0.01em;
-            }
-            .footer-col a {
-                color: #b4b8d1;
-                text-decoration: none;
-                display: block;
-                margin-bottom: 8px;
-                font-weight: 500;
-                transition: color 0.2s;
-            }
-            .footer-col a:hover {
-                color: #fff;
-            }
-            .footer-bottom {
-                text-align: center;
-                color: #7c7e97;
-                font-size: 13px;
-                padding: 32px 0 12px 0;
-                border-top: 1px solid #2e304a;
-                margin-top: 0;
-            }
-            @media (max-width: 700px) {
-                .footer-inner {
-                    grid-template-columns: 1fr;
-                    gap: 32px;
-                    padding: 40px 12px 24px 12px;
-                }
-            }
-            text-align: center
-        }
-        
-        .phone-stack {
-            margin: 60px auto 0
-        }
-        /* ---------- HOME PAGE FINAL RESPONSIVE OVERRIDES ---------- */
-        
-        @media (max-width: 1024px) {
-            .hero {
-                padding: 132px 16px 72px !important;
-            }
-            .hero-inner {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 36px !important;
-            }
-            .hero h1,
-            .hero p {
-                text-align: center !important;
-            }
-            .hero p {
-                max-width: 92vw !important;
-            }
-            .hero-actions {
-                justify-content: center !important;
-            }
-            .phone-stack {
-                width: min(86vw, 320px) !important;
-                height: min(95vw, 360px) !important;
-            }
-            .phone {
-                width: min(44vw, 170px) !important;
-            }
-        }
-        
-        @media (max-width: 720px) {
-            .nav-inner {
-                flex-direction: column !important;
-                align-items: stretch !important;
-                padding: 10px 6px !important;
-            }
-            .logo {
-                display: flex !important;
-                justify-content: center !important;
-                margin-bottom: 8px !important;
-            }
-            .nav-links {
-                width: 100% !important;
-                flex-wrap: wrap !important;
-                gap: 10px !important;
-                justify-content: center !important;
-            }
-            .nav-links a {
-                font-size: 15px !important;
-                min-width: 82px !important;
-                padding: 7px 10px !important;
-            }
-            .hero {
-                padding: 136px 12px 56px !important;
-            }
-            .hero h1 {
-                font-size: 1.6rem !important;
-                line-height: 1.2 !important;
-                margin-bottom: 10px !important;
-            }
-            .hero p {
-                font-size: 0.98rem !important;
-                line-height: 1.55 !important;
-                max-width: 96vw !important;
-            }
-            .store-buttons {
-                justify-content: center !important;
-            }
-            .store-buttons img {
-                height: 40px !important;
-                max-width: 84vw !important;
-            }
-            .phone-stack {
-                width: 100% !important;
-                max-width: 270px !important;
-                height: auto !important;
-                margin: 0 auto !important;
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                align-items: end !important;
-                justify-items: center !important;
-                gap: 0 !important;
-                overflow: visible !important;
-            }
-            .phone {
-                position: relative !important;
-                top: auto !important;
-                left: auto !important;
-                right: auto !important;
-                height: auto !important;
-                border-radius: 14px !important;
-                box-shadow: 0 20px 42px rgba(0, 0, 0, .20) !important;
-                animation: none !important;
-            }
-            .phone.back {
-                display: block !important;
-                width: min(42vw, 114px) !important;
-                transform: translateY(32px) !important;
-                opacity: 0.95 !important;
-            }
-            .phone.front {
-                width: min(46vw, 128px) !important;
-                transform: translateY(0) !important;
-            }
-            .section {
-                padding: 56px 12px !important;
-            }
-            .section h2 {
-                font-size: 1.35rem !important;
-            }
-            .section p {
-                font-size: 0.98rem !important;
-                margin-bottom: 24px !important;
-            }
-            .feature {
-                padding: 16px 12px !important;
-                border-radius: 14px !important;
-            }
-            footer {
-                padding-left: 12px !important;
-                padding-right: 12px !important;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo img {
-                height: 32px !important;
-            }
-            .logo-text {
-                font-size: 1.12rem !important;
-            }
-            .nav-links a {
-                font-size: 14px !important;
-                min-width: 72px !important;
-                padding: 6px 8px !important;
-            }
-            .hero {
-                padding: 126px 10px 40px !important;
-            }
-            .hero h1 {
-                font-size: 1.28rem !important;
-            }
-            .hero p {
-                font-size: 0.92rem !important;
-            }
-            .store-buttons img {
-                height: 34px !important;
-            }
-            .phone-stack {
-                max-width: 220px !important;
-                height: auto !important;
-            }
-            .phone.back {
-                width: min(42vw, 92px) !important;
-                transform: translateY(26px) !important;
-            }
-            .phone.front {
-                width: min(45vw, 102px) !important;
-                transform: translateY(0) !important;
-                border-radius: 11px !important;
-            }
-            .section {
-                padding: 40px 10px !important;
-            }
-            .section h2 {
-                font-size: 1.08rem !important;
-            }
-        }
-    </style>
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
+      padding-top: 5rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -15%; right: -8%;
+      width: 750px; height: 750px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,181,253,0.4) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 4rem 3rem 5rem 6rem;
+      position: relative; z-index: 2;
+    }
+
+    .powered-pill {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      background: white;
+      border: 1.5px solid var(--lav-soft);
+      border-radius: 2rem; padding: 0.4rem 1rem 0.4rem 0.55rem;
+      margin-bottom: 2rem; width: fit-content;
+      box-shadow: 0 2px 14px rgba(139,92,246,0.07);
+    }
+    .powered-pill .nq-dots { display: flex; align-items: center; }
+    .powered-pill span {
+      font-size: 0.69rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .powered-pill strong { color: var(--lav-deep); }
+
+    .hero-eyebrow {
+      font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--lav-main); font-weight: 700; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .hero-eyebrow::before { content:''; width:1.8rem; height:2px; background:var(--lav-mid); border-radius:2px; }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4.6vw, 4.4rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--lav-dark); margin-bottom: 1.5rem;
+    }
+    .hero-h1 em { font-style: italic; color: var(--lav-main); }
+    .hero-sub {
+      font-size: 1.05rem; line-height: 1.85; color: var(--muted);
+      max-width: 42ch; font-weight: 400; margin-bottom: 2.5rem;
+    }
+    .btn-play {
+      display: inline-flex; align-items: center; gap: 0.9rem;
+      background: var(--lav-dark); color: white;
+      padding: 0.95rem 1.9rem; border-radius: 1rem;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      box-shadow: 0 6px 28px rgba(46,16,101,0.22);
+      transition: transform 0.2s, box-shadow 0.2s; width: fit-content;
+    }
+    .btn-play:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(46,16,101,0.32); }
+    .btn-play-text small { display:block; font-size:0.64rem; font-weight:400; opacity:0.6; letter-spacing:0.07em; text-transform:uppercase; }
+    .btn-play-text strong { font-size:0.96rem; }
+
+    .hero-trust {
+      display: flex; gap: 1.8rem; margin-top: 2.5rem;
+      padding-top: 2rem; border-top: 1px solid var(--lav-soft);
+    }
+    .ht-item { display: flex; align-items: center; gap: 0.5rem; }
+    .ht-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lav-main); }
+    .ht-item span { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+
+    /* HERO RIGHT */
+    .hero-right {
+      position: relative; display: flex; align-items: flex-end; justify-content: center;
+      padding: 3rem 3rem 0; overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; top: 8%; left: 8%; right: 8%; bottom: 0;
+      background: linear-gradient(160deg, var(--lav-light) 0%, #B8A5F5 60%, var(--lav-mid) 100%);
+      border-radius: 50% 50% 0 0 / 58% 58% 0 0; z-index: 0;
+    }
+    .hero-phone-wrap {
+      position: relative; z-index: 1;
+      display: flex; gap: 1rem; align-items: flex-end;
+    }
+    .hero-phone-wrap img {
+      width: clamp(125px, 17vw, 185px);
+      filter: drop-shadow(0 18px 44px rgba(91,33,182,0.25));
+      border-radius: 1.4rem;
+    }
+    .hero-phone-wrap img:first-child { transform: rotate(-4deg) translateY(16px); }
+    .hero-phone-wrap img:last-child  { transform: rotate(3.5deg) translateY(8px); }
+
+    .deco-ring {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      border: 1.5px solid rgba(139,92,246,0.22);
+    }
+    .dr1 { width: 110px; height: 110px; top: 10%; right: 7%; animation: spinR 22s linear infinite; }
+    .dr2 { width: 58px;  height: 58px;  top: 22%; left: 10%; animation: spinR 15s linear infinite reverse; }
+    .dr3 { width: 75px;  height: 75px;  bottom: 32%; right: 12%; border-style: dashed; animation: spinR 19s linear infinite; }
+    @keyframes spinR { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+    .float-el { position: absolute; pointer-events: none; animation: floatY 7s ease-in-out infinite; }
+    .fe1 { top: 22%; right: 4%; font-size: 1.5rem; opacity: 0.2; }
+    .fe2 { top: 58%; left: 4%; font-size: 1rem;   opacity: 0.18; animation-delay: 2s; }
+    .fe3 { top: 13%; left: 22%; font-size: 0.85rem; opacity: 0.15; animation-delay: 4.5s; }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+
+    /* NEXQUARD STRIP */
+    .nq-strip {
+      background: linear-gradient(90deg, var(--lav-dark) 0%, #3A1D90 100%);
+      padding: 1.2rem 5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .nq-strip-brand { display: flex; align-items: center; gap: 0.7rem; }
+    .nq-strip-brand .nq-wordmark {
+      font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 700;
+      background: linear-gradient(90deg, #2DD4BF, #60A5FA);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      letter-spacing: 0.01em;
+    }
+    .nq-strip-brand .nq-sub {
+      font-size: 0.7rem; color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+    }
+    .nq-sep { color: rgba(255,255,255,0.18); font-size: 1rem; }
+    .nq-strip p { color: rgba(255,255,255,0.5); font-size: 0.78rem; letter-spacing: 0.06em; }
+    .nq-strip p strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+    /* COMMON SECTION */
+    section { padding: 6.5rem 6rem; }
+    .stag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--lav-main); font-weight: 700; margin-bottom: 1rem;
+    }
+    .stag::before { content:''; width:1.4rem; height:2px; background:var(--lav-mid); border-radius:2px; }
+    .sh2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-weight: 700; line-height: 1.2; color: var(--lav-dark);
+    }
+    .sh2 em { font-style: italic; color: var(--lav-main); }
+
+    /* INTENT */
+    .intent { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; background: white; }
+    .intent-copy .sh2 { margin-bottom: 1.2rem; }
+    .intent-copy p { font-size: 1rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.1rem; }
+    .ic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ic-card {
+      background: var(--lav-lightest);
+      border: 1.5px solid var(--lav-soft);
+      border-radius: 1.2rem; padding: 1.6rem 1.4rem;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .ic-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(139,92,246,0.1); border-color: var(--lav-mid); }
+    .ic-card:nth-child(even) { margin-top: 1.4rem; }
+    .ic-ico {
+      width: 2.4rem; height: 2.4rem; border-radius: 0.7rem;
+      background: linear-gradient(135deg, var(--lav-mid), var(--lav-main));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; margin-bottom: 0.8rem; color: white;
+    }
+    .ic-card h3 { font-family: 'Playfair Display', serif; font-size: 1.08rem; font-weight: 600; color: var(--lav-dark); margin-bottom: 0.4rem; }
+    .ic-card p { font-size: 0.81rem; color: var(--muted); line-height: 1.6; }
+
+    /* FEATURES */
+    .features { background: var(--lav-dark); padding: 6.5rem 6rem; }
+    .features .stag { color: var(--lav-mid); }
+    .features .stag::before { background: var(--lav-mid); }
+    .features .sh2 { color: white; margin-bottom: 3.5rem; }
+    .features .sh2 em { color: var(--lav-mid); }
+    .fg { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.3rem; }
+    .feat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(196,181,253,0.14);
+      border-radius: 1.4rem; padding: 2.2rem;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .feat:hover { background: rgba(255,255,255,0.08); border-color: rgba(196,181,253,0.38); transform: translateY(-4px); }
+    .feat-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 700; font-style: italic;
+      color: rgba(196,181,253,0.16); line-height: 1; margin-bottom: 1rem;
+    }
+    .feat h3 { font-family: 'Playfair Display', serif; font-size: 1.22rem; color: white; font-weight: 600; margin-bottom: 0.7rem; }
+    .feat p { font-size: 0.86rem; line-height: 1.75; color: rgba(255,255,255,0.46); }
+
+    /* TRUST */
+    .trust { display: grid; grid-template-columns: 5fr 7fr; gap: 5rem; align-items: center; background: var(--lav-lightest); }
+    .trust-copy .sh2 { margin-bottom: 1.2rem; }
+    .trust-copy p { font-size: 1rem; line-height: 1.85; color: var(--muted); margin-bottom: 1.8rem; }
+    .tlink {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--lav-main); text-decoration: none; font-size: 0.88rem;
+      font-weight: 600; border-bottom: 1.5px solid var(--lav-mid);
+      padding-bottom: 2px; transition: gap 0.2s, color 0.2s;
+    }
+    .tlink:hover { gap: 0.8rem; color: var(--lav-deep); }
+    .pillars { display: flex; flex-direction: column; gap: 1.2rem; }
+    .pillar {
+      display: flex; align-items: flex-start; gap: 1.3rem;
+      background: white; border: 1.5px solid var(--lav-soft);
+      border-radius: 1.2rem; padding: 1.6rem 1.8rem;
+      box-shadow: 0 2px 14px rgba(139,92,246,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pillar:hover { transform: translateX(6px); box-shadow: 0 4px 22px rgba(139,92,246,0.1); }
+    .p-icon {
+      width: 2.8rem; height: 2.8rem; border-radius: 0.7rem; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--lav-light), var(--lav-mid));
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .pillar h4 { font-family: 'Playfair Display', serif; font-size: 1.08rem; font-weight: 600; color: var(--lav-dark); margin-bottom: 0.3rem; }
+    .pillar p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    /* QUOTE */
+    .quote-sec {
+      background: linear-gradient(135deg, var(--lav-main), var(--lav-deep));
+      padding: 6rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .quote-sec::before, .quote-sec::after {
+      content:''; position:absolute; border-radius:50%;
+      background: rgba(255,255,255,0.055); pointer-events:none;
+    }
+    .quote-sec::before { width:450px; height:450px; top:-180px; left:-80px; }
+    .quote-sec::after  { width:320px; height:320px; bottom:-120px; right:-60px; }
+    .quote-sec blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.9rem);
+      font-weight: 400; font-style: italic;
+      color: white; max-width: 22ch; margin: 0 auto 1.5rem;
+      line-height: 1.4; position: relative; z-index: 1;
+    }
+    .quote-sec blockquote::before { content:'\201C'; font-size:6rem; color:rgba(255,255,255,0.12); position:absolute; top:-2.5rem; left:-2.5rem; font-style:normal; line-height:1; }
+    .quote-sec cite { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); position:relative; z-index:1; }
+
+    /* DOWNLOAD */
+    .download { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; background: white; }
+    .dl-copy .sh2 { margin-bottom: 1rem; }
+    .dl-copy p { font-size: 1rem; line-height: 1.85; color: var(--muted); margin-bottom: 2rem; }
+    .dl-btn {
+      display: inline-flex; align-items: center; gap: 1rem;
+      background: var(--lav-dark); color: white;
+      padding: 1rem 1.8rem; border-radius: 1rem;
+      text-decoration: none;
+      box-shadow: 0 6px 28px rgba(46,16,101,0.2);
+      transition: transform 0.2s, box-shadow 0.2s; width: fit-content;
+    }
+    .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(46,16,101,0.3); }
+    .dl-btn-icon { font-size: 2rem; }
+    .dl-btn-text small { display:block; font-size:0.65rem; letter-spacing:0.07em; text-transform:uppercase; opacity:0.5; }
+    .dl-btn-text strong { font-size:0.97rem; }
+    .dl-visual { display: flex; justify-content: center; }
+    .dl-phone {
+      width: clamp(155px, 22vw, 215px);
+      filter: drop-shadow(0 22px 52px rgba(139,92,246,0.2));
+      animation: pFloat 6s ease-in-out infinite; border-radius: 2rem;
+    }
+    @keyframes pFloat { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-14px) rotate(1deg)} }
+
+    /* FOOTER */
+    footer { background: var(--lav-dark); padding: 4rem 6rem; }
+    .ftop { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 3.5rem; margin-bottom: 2.5rem; }
+    .fb-logo { display: flex; align-items: center; margin-bottom: 0.9rem; }
+    .fb-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
+    .fb-tagline { font-size: 0.84rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 28ch; margin-bottom: 1.3rem; }
+    .nq-badge {
+      display: flex; align-items: center; gap: 0.7rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.8rem; padding: 0.7rem 1rem; width: fit-content;
+    }
+    .nq-badge .nq-wm { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem;
+      background: linear-gradient(90deg, #2DD4BF, #60A5FA);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nq-badge div small { display:block; font-size:0.59rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.3); }
+    .fc h5 { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 1.2rem; font-weight: 700; }
+    .fc a { display:block; text-decoration:none; color:rgba(255,255,255,0.48); font-size:0.87rem; margin-bottom:0.6rem; transition:color 0.2s; }
+    .fc a:hover { color: var(--lav-mid); }
+    .fbot { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.8rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .fbot p { font-size: 0.76rem; color: rgba(255,255,255,0.24); }
+    .fbot a { color:rgba(255,255,255,0.34); text-decoration:none; font-size:0.76rem; transition:color 0.2s; }
+    .fbot a:hover { color: var(--lav-mid); }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.8rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 5rem 2rem 2rem; }
+      .hero-right { min-height: 55vw; padding: 1.5rem 1.5rem 0; }
+      section { padding: 4.5rem 2rem; }
+      .intent, .trust, .download { grid-template-columns: 1fr; gap: 3rem; }
+      .features { padding: 4.5rem 2rem; }
+      .fg { grid-template-columns: 1fr; }
+      .ftop { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      footer { padding: 3rem 2rem; }
+      .quote-sec { padding: 4.5rem 2rem; }
+      .ic-grid { grid-template-columns: 1fr; }
+      .ic-card:nth-child(even) { margin-top: 0; }
+      .nq-strip { padding: 1.2rem 2rem; }
+    }
+  </style>
 </head>
+<body>
 
-<body id="top">
-    <div class="page-bg"></div>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo-wrap">
+    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
+    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html">Features</a></li>
+    <li><a href="safety.html">Safety</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#company">Company</a></li>
+    <li><a href="careers.html">Careers</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
+</nav>
 
-    <nav>
-        <div class="nav-inner">
-            <div class="logo">
-                <a class="logo-link" href="index.html#top" aria-label="Destnly Home">
-                    <img src="assets/images/destnly_logo_no_bg.png" alt="Destnly" width="879" height="751" style="height:38px;width:auto;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-                    <span class="logo-text">Destnly</span>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="#top" class="active" aria-current="page">Home</a>
-                <a href="features.html">Features</a>
-                <a href="about.html">About</a>
-                <a href="safety.html">Safety</a>
-                <a href="careers.html">Careers</a>
-            </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="powered-pill fade-up">
+      <svg class="nq-dots" width="22" height="22" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="7"  r="4"   fill="#2DD4BF"/>
+        <circle cx="43" cy="12" r="3.4" fill="#32C4C8"/>
+        <circle cx="52" cy="23" r="3"   fill="#3890E0"/>
+        <circle cx="55" cy="35" r="3.4" fill="#3B6FE8"/>
+        <circle cx="50" cy="47" r="3"   fill="#5255E8"/>
+        <circle cx="17" cy="12" r="3.4" fill="#2DCFBA"/>
+        <circle cx="9"  cy="23" r="3"   fill="#2DBFC8"/>
+        <circle cx="6"  cy="35" r="3.4" fill="#2DAFD8"/>
+        <circle cx="10" cy="47" r="3"   fill="#3295E0"/>
+        <circle cx="18" cy="55" r="3.4" fill="#3B7AE8"/>
+        <circle cx="30" cy="58" r="4"   fill="#3B6FE8"/>
+        <circle cx="42" cy="55" r="3.4" fill="#5250E8"/>
+      </svg>
+      <span>A product of <strong>Nexquard Technology Pvt Ltd</strong></span>
+    </div>
+
+    <div class="hero-eyebrow fade-up">Where stories begin</div>
+    <h1 class="hero-h1 fade-up">Find the connection<br/><em>meant for you.</em></h1>
+    <p class="hero-sub fade-up">Destnly helps you build meaningful relationships based on values, compatibility, and genuine intent — not endless swiping.</p>
+
+    <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="btn-play fade-up">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.79c.3.17.64.21.96.13l11.51-11.51L12 8.76 3.18 23.79zm14.3-13.58L14.72 7.5 3.49.36C3.19.18 2.85.14 2.53.22l11.47 11.47 3.48-1.48zm2.16 4.7c.24-.22.36-.53.36-.91s-.12-.69-.37-.9l-2.54-1.44-3.08 3.08 3.08 3.08 2.55-1.44v-.47zm-16.46 7.7L15.5 14.9l-3.5-3.49L3.18.21A1.09 1.09 0 0 0 2.82 1v21.79c0 .39.13.7.36.91z"/></svg>
+      <span class="btn-play-text">
+        <small>Download on</small>
+        <strong>Google Play</strong>
+      </span>
+    </a>
+
+    <div class="hero-trust fade-up">
+      <div class="ht-item"><span class="ht-dot"></span><span>Intent-first matching</span></div>
+      <div class="ht-item"><span class="ht-dot"></span><span>Privacy by design</span></div>
+      <div class="ht-item"><span class="ht-dot"></span><span>Verified community</span></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-blob"></div>
+    <div class="deco-ring dr1"></div>
+    <div class="deco-ring dr2"></div>
+    <div class="deco-ring dr3"></div>
+    <div class="float-el fe1">💜</div>
+    <div class="float-el fe2">✦</div>
+    <div class="float-el fe3">◈</div>
+    <div class="hero-phone-wrap">
+      <img src="assets/images/phone1-optimized.png" alt="Destnly app" />
+      <img src="assets/images/phone2-optimized.png" alt="Destnly app" />
+    </div>
+  </div>
+</section>
+
+<!-- NEXQUARD STRIP -->
+<div class="nq-strip">
+  <div class="nq-strip-brand">
+    <div>
+      <div class="nq-wordmark">Nexquard</div>
+      <div class="nq-sub">Technology Pvt Ltd</div>
+    </div>
+  </div>
+  <span class="nq-sep">|</span>
+  <p><strong>Destnly is a product of Nexquard Technology Pvt Ltd</strong> &nbsp;·&nbsp; Built &amp; crafted in India 🇮🇳</p>
+</div>
+
+<!-- INTENT -->
+<section class="intent" id="about">
+  <div class="intent-copy fade-up">
+    <span class="stag">Dating, with intention</span>
+    <h2 class="sh2">More than<br/>an <em>algorithm.</em></h2>
+    <p>We created Destnly for people who are tired of endless swiping and shallow matches — designed for those who want clarity, respect, and real emotional connection.</p>
+    <p>Every feature is shaped around one question: does this help people connect more deeply?</p>
+  </div>
+  <div class="ic-grid">
+    <div class="ic-card fade-up">
+      <div class="ic-ico">✦</div>
+      <h3>Less noise, more clarity</h3>
+      <p>Surface matches aligned with what you truly care about, not just first impressions.</p>
+    </div>
+    <div class="ic-card fade-up">
+      <div class="ic-ico">◎</div>
+      <h3>Real people, real intent</h3>
+      <p>Profiles built for authenticity, helping you see the person beyond their photos.</p>
+    </div>
+    <div class="ic-card fade-up">
+      <div class="ic-ico">❋</div>
+      <h3>Conversations that flow</h3>
+      <p>Thoughtful prompts so conversations start naturally and stay meaningful.</p>
+    </div>
+    <div class="ic-card fade-up">
+      <div class="ic-ico">◈</div>
+      <h3>Value-based matching</h3>
+      <p>Compatibility deeper than interests — we match on the values that shape your life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <span class="stag">What makes us different</span>
+  <h2 class="sh2">Built for <em>real</em> connection.</h2>
+  <div class="fg">
+    <div class="feat fade-up">
+      <div class="feat-n">01</div>
+      <h3>Intention-first profiles</h3>
+      <p>Go beyond photos. Share your values and what you're looking for. Let the real you attract the right person.</p>
+    </div>
+    <div class="feat fade-up">
+      <div class="feat-n">02</div>
+      <h3>Compatibility engine</h3>
+      <p>Matching that goes deeper than swipes — surfacing people whose values genuinely align with yours.</p>
+    </div>
+    <div class="feat fade-up">
+      <div class="feat-n">03</div>
+      <h3>Meaningful starters</h3>
+      <p>Curated prompts designed to spark real dialogue — no more awkward "hey" messages going nowhere.</p>
+    </div>
+    <div class="feat fade-up">
+      <div class="feat-n">04</div>
+      <h3>Privacy by design</h3>
+      <p>You control who sees you, what you share, and how you interact. Your data is yours, always.</p>
+    </div>
+    <div class="feat fade-up">
+      <div class="feat-n">05</div>
+      <h3>Verified community</h3>
+      <p>Active moderation reduces fake accounts, keeping the community authentic and safe for everyone.</p>
+    </div>
+    <div class="feat fade-up">
+      <div class="feat-n">06</div>
+      <h3>Respect-driven standards</h3>
+      <p>Clear community guidelines and easy reporting tools keep Destnly welcoming for everyone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust" id="safety">
+  <div class="trust-copy fade-up">
+    <span class="stag">Your safety matters</span>
+    <h2 class="sh2">A space<br/>built on <em>trust.</em></h2>
+    <p>Safety, privacy, and respect are not optional — they're foundational. Destnly is built to protect your experience at every step.</p>
+    <a href="safety.html" class="tlink">Read our safety policies →</a>
+  </div>
+  <div class="pillars fade-up">
+    <div class="pillar">
+      <div class="p-icon">🔒</div>
+      <div>
+        <h4>Privacy-first by design</h4>
+        <p>You control your visibility, data, and interactions — always, without compromise.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-icon">✓</div>
+      <div>
+        <h4>Verified presence</h4>
+        <p>We actively reduce fake accounts so you connect only with real, genuine people.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="p-icon">🤝</div>
+      <div>
+        <h4>Respect-driven community</h4>
+        <p>Clear standards and accessible reporting keep Destnly welcoming for everyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-sec">
+  <blockquote class="fade-up">"Where every story finds its beginning."</blockquote>
+  <cite>— The Destnly Promise</cite>
+</div>
+
+<!-- DOWNLOAD -->
+<section class="download">
+  <div class="dl-copy fade-up">
+    <span class="stag">Start your journey</span>
+    <h2 class="sh2">Ready to find<br/>your <em>person?</em></h2>
+    <p>Download Destnly and take the first step toward a connection that actually means something. Available now on Android.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="dl-btn">
+      <span class="dl-btn-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.79c.3.17.64.21.96.13l11.51-11.51L12 8.76 3.18 23.79zm14.3-13.58L14.72 7.5 3.49.36C3.19.18 2.85.14 2.53.22l11.47 11.47 3.48-1.48zm2.16 4.7c.24-.22.36-.53.36-.91s-.12-.69-.37-.9l-2.54-1.44-3.08 3.08 3.08 3.08 2.55-1.44v-.47zm-16.46 7.7L15.5 14.9l-3.5-3.49L3.18.21A1.09 1.09 0 0 0 2.82 1v21.79c0 .39.13.7.36.91z"/></svg>
+      </span>
+      <span class="dl-btn-text">
+        <small>Download on</small>
+        <strong>Google Play</strong>
+      </span>
+    </a>
+  </div>
+  <div class="dl-visual fade-up">
+    <img class="dl-phone" src="assets/images/phone1-optimized.png" alt="Destnly app" />
+  </div>
+</section>
+
+<!-- COMPANY SECTION -->
+<section id="company" style="background: var(--lav-lightest); text-align: center;">
+  <div style="max-width: 780px; margin: 0 auto;">
+    <span class="stag">The Company Behind Destnly</span>
+    <h2 class="sh2" style="margin-bottom: 1.5rem;">Powered by <em>Nexquard Technology</em></h2>
+    <div style="display:inline-flex; align-items:center; gap:0.8rem; background:white; border:1.5px solid var(--lav-soft); border-radius:1rem; padding:1rem 1.6rem; margin-bottom:2rem; box-shadow:0 2px 14px rgba(139,92,246,0.06);">
+      <svg width="32" height="32" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="7"  r="4"   fill="#2DD4BF"/>
+        <circle cx="43" cy="12" r="3.4" fill="#32C4C8"/>
+        <circle cx="52" cy="23" r="3"   fill="#3890E0"/>
+        <circle cx="55" cy="35" r="3.4" fill="#3B6FE8"/>
+        <circle cx="50" cy="47" r="3"   fill="#5255E8"/>
+        <circle cx="17" cy="12" r="3.4" fill="#2DCFBA"/>
+        <circle cx="9"  cy="23" r="3"   fill="#2DBFC8"/>
+        <circle cx="6"  cy="35" r="3.4" fill="#2DAFD8"/>
+        <circle cx="10" cy="47" r="3"   fill="#3295E0"/>
+        <circle cx="18" cy="55" r="3.4" fill="#3B7AE8"/>
+        <circle cx="30" cy="58" r="4"   fill="#3B6FE8"/>
+        <circle cx="42" cy="55" r="3.4" fill="#5250E8"/>
+      </svg>
+      <div style="text-align:left;">
+        <div style="font-family:'Nunito',sans-serif; font-weight:700; font-size:1.1rem; background:linear-gradient(90deg,#2DD4BF,#60A5FA); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Nexquard Technology Pvt Ltd</div>
+        <div style="font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted);">Registered Company · India</div>
+      </div>
+    </div>
+    <p style="font-size:1rem; line-height:1.85; color:var(--muted); margin-bottom:1.2rem;">
+      <strong style="color:var(--lav-dark);">Nexquard Technology Pvt Ltd</strong> is a technology company focused on building human-first digital products. Destnly is our flagship product — a meaningful connections platform designed to bring people together with purpose, authenticity, and respect.
+    </p>
+    <p style="font-size:1rem; line-height:1.85; color:var(--muted);">
+      From infrastructure to product design, every decision at Nexquard is guided by one question: <em style="color:var(--lav-main);">does this make people's lives genuinely better?</em> Destnly is our answer to a world of shallow digital interactions.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ftop">
+    <div>
+      <div class="fb-logo">
+        <img src="logo.png" alt="Destnly"/>
+      </div>
+      <p class="fb-tagline">Find the connection meant for you. Meaningful relationships built on values, compatibility, and genuine intent.</p>
+      <div class="nq-badge">
+        <svg width="24" height="24" viewBox="0 0 60 60" fill="none">
+          <circle cx="30" cy="7"  r="4" fill="#2DD4BF"/>
+          <circle cx="43" cy="12" r="3.4" fill="#32C4C8"/>
+          <circle cx="52" cy="23" r="3" fill="#3890E0"/>
+          <circle cx="55" cy="35" r="3.4" fill="#3B6FE8"/>
+          <circle cx="17" cy="12" r="3.4" fill="#2DCFBA"/>
+          <circle cx="9"  cy="23" r="3" fill="#2DBFC8"/>
+          <circle cx="6"  cy="35" r="3.4" fill="#2DAFD8"/>
+          <circle cx="18" cy="55" r="3.4" fill="#3B7AE8"/>
+          <circle cx="30" cy="58" r="4" fill="#3B6FE8"/>
+          <circle cx="42" cy="55" r="3.4" fill="#5250E8"/>
+        </svg>
+        <div>
+          <small>A product of</small>
+          <div class="nq-wm">Nexquard Technology Pvt Ltd</div>
         </div>
-    </nav>
+      </div>
+    </div>
+    <div class="fc">
+      <h5>Product</h5>
+      <a href="features.html">Features</a>
+      <a href="safety.html">Safety</a>
+      <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN">Download</a>
+    </div>
+    <div class="fc">
+      <h5>Company</h5>
+      <a href="about.html">About</a>
+      <a href="#company">Nexquard Technology</a>
+      <a href="careers.html">Careers</a>
+    </div>
+    <div class="fc">
+      <h5>Legal</h5>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="account-deletion.html">Account Deletion</a>
+      <a href="child-safety.html">Child Safety</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <div>
+      <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
+      <p style="font-size:0.72rem; color:rgba(255,255,255,0.18); margin-top:0.3rem;">Destnly is a product of Nexquard Technology Pvt Ltd, registered in India.</p>
+    </div>
+    <div style="display:flex;gap:1.4rem">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
 
-    <section class="hero">
-        <div class="hero-inner">
-            <div>
-                <h1>Find the connection<br>meant for you</h1>
-                <p>
-                    Destnly helps you build meaningful relationships based on values, compatibility, and genuine intent. Not endless swiping.
-                </p>
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 85);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-                <div class="hero-actions">
-                    <div class="store-buttons">
-                        <!-- <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"> -->
-                        <a href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener noreferrer" aria-label="Download Destnly on Google Play">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get Destnly on Google Play" width="646" height="250">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="phone-stack">
-                <img src="assets/images/phone1-optimized.png" class="phone back" alt="Destnly app screenshot 1" width="252" height="560" loading="lazy" decoding="async" fetchpriority="low">
-                <img src="assets/images/phone2-optimized.png" class="phone front" alt="Destnly app screenshot 2" width="252" height="560" loading="eager" decoding="async" fetchpriority="high">
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="section-inner">
-            <!-- Section A: Why Destnly exists -->
-            <h2>Dating, with intention</h2>
-            <p>
-                We created Destnly for people who are tired of endless swiping and shallow matches. Destnly is designed for those who want clarity, respect, and real emotional connection, whether that leads to love, partnership, or something meaningful in between.
-            </p>
-        </div>
-    </section>
-
-    <!-- Section B: How Destnly feels different -->
-    <section class="section">
-        <div class="section-inner">
-            <h2>Designed for how people actually connect</h2>
-            <div class="features">
-                <div class="feature">
-                    <h3>Less noise, more clarity</h3>
-                    <p>
-                        We reduce distraction and surface matches that align with what you care about, not just what looks good at first glance.
-                    </p>
-                </div>
-                <div class="feature">
-                    <h3>Real people, real intent</h3>
-                    <p>
-                        Profiles on Destnly are built around authenticity, helping you understand the person beyond photos.
-                    </p>
-                </div>
-                <div class="feature">
-                    <h3>Conversations that flow</h3>
-                    <p>
-                        Thoughtful prompts and shared context help conversations start naturally and stay meaningful.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section C: Trust & Safety Preview -->
-    <section class="section">
-        <div class="section-inner">
-            <h2>A space built on trust</h2>
-            <p>
-                Safety, privacy, and respect are not optional, they’re foundational. Destnly is built to protect your experience at every step.
-            </p>
-            <div class="features">
-                <div class="feature">
-                    <h3>Privacy-first by design</h3>
-                    <p>
-                        You control your visibility, data, and interactions always.
-                    </p>
-                </div>
-                <div class="feature">
-                    <h3>Verified presence</h3>
-                    <p>
-                        We actively work to reduce fake accounts and bad actors.
-                    </p>
-                </div>
-                <div class="feature">
-                    <h3>Respect-driven community</h3>
-                    <p>
-                        Clear standards and reporting tools help keep Destnly welcoming for everyone.
-                    </p>
-                </div>
-            </div>
-            <div style="margin-top:40px">
-                <a href="safety.html" class="join-btn">Learn about Safety</a>
-            </div>
-        </div>
-    </section>
-
-    <div class="footer-gradient-bridge"></div>
-    <footer>
-        <div class="footer-inner">
-            <div>
-                <div class="footer-brand" style="display:flex;align-items:center;gap:12px;">
-                    <img src="assets/images/destnly_logo_no_bg.png" alt="Destnly" width="879" height="751" style="height:38px;width:auto;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-                    <span>Destnly</span>
-                </div>
-                <div class="footer-desc" style="margin-top:10px;font-size:1.08rem;color:#b4b8d1;font-weight:500;">
-                    Where stories begin
-                </div>
-                <div class="footer-social" aria-label="Destnly social media links">
-                    <a href="https://x.com/Destnly_handle?t=E3qAe8VxEao6mIHqsgu2Uw&s=09" class="social-x" target="_blank" rel="noopener noreferrer" aria-label="Destnly on X (Twitter)">
-                        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://www.instagram.com/destnly_official?igsh=MWhlbHhtbW5sdHd3cA==" class="social-ig" target="_blank" rel="noopener noreferrer" aria-label="Destnly on Instagram">
-                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://www.facebook.com/share/16ZKn8gzsk/" class="social-fb" target="_blank" rel="noopener noreferrer" aria-label="Destnly on Facebook">
-                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/destnly-main-a7b57238b/" class="social-li" target="_blank" rel="noopener noreferrer" aria-label="Destnly on LinkedIn">
-                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <strong>Product</strong>
-                <a href="features.html">Features</a>
-                <a href="safety.html">Safety</a>
-            </div>
-            <div class="footer-col">
-                <strong>Company</strong>
-                <a href="about.html">About</a>
-                <a href="careers.html">Careers</a>
-            </div>
-            <div class="footer-col">
-                <strong>Legal</strong>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="account-deletion.html">Account Deletion</a>
-                <a href="child-safety.html">Child Safety</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 Destnly. All rights reserved.
-        </div>
-    </footer>
-
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow =
+      window.scrollY > 20 ? '0 2px 22px rgba(91,33,182,0.1)' : 'none';
+  });
+</script>
 </body>
-
 </html>

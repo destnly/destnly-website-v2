@@ -1,350 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers | Destnly</title>
-
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" href="assets/images/logo.png">
-    <link rel="apple-touch-icon" href="assets/images/logo.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="application-name" content="Destnly">
-    <meta name="apple-mobile-web-app-title" content="Destnly">
-    <meta name="theme-color" content="#8b7cf6">
-    <meta name="description" content="Explore careers at Destnly. We are building meaningful connections with a product-first, safety-first mindset.">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    </noscript>
-    <style>
-         :root {
-            --accent: #8b7cf6;
-            --accent-dark: #6f63e6;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --surface: #ffffff;
-            --bg: #f6f2ff;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: Inter, system-ui, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            overflow-x: hidden;
-        }
-        
-        .page-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            background: linear-gradient( to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.75)), url("assets/images/hero-bg.png") center/cover no-repeat;
-        }
-        
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(168, 128, 222, 0.8);
-            backdrop-filter: blur(14px);
-        }
-        
-        .nav-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .logo img {
-            height: 38px;
-            width: auto;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-        }
-        
-        .logo-text {
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: #6f63e6;
-            letter-spacing: 0.5px;
-            line-height: 1;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 26px;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #374151;
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 10px;
-            transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #31295c;
-            background: rgba(111, 99, 230, 0.12);
-        }
-        
-        .nav-links a.active {
-            background: #fff;
-            color: #4d3fbe;
-            box-shadow: 0 6px 16px rgba(111, 99, 230, 0.18);
-        }
-        
-        .page {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 56px 24px 84px;
-        }
-        
-        .hero {
-            background: var(--surface);
-            border: 1px solid rgba(139, 124, 246, 0.2);
-            border-radius: 24px;
-            padding: 44px;
-            box-shadow: 0 20px 48px rgba(111, 99, 230, 0.11);
-        }
-        
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(139, 124, 246, 0.12);
-            color: var(--accent-dark);
-            border-radius: 999px;
-            padding: 8px 14px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        
-        h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.12;
-            margin-bottom: 14px;
-            color: #2d2556;
-        }
-        
-        .hero p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #4b5563;
-            max-width: 760px;
-        }
-        
-        .grid {
-            margin-top: 26px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-        
-        .card {
-            background: #fbfaff;
-            border: 1px solid rgba(139, 124, 246, 0.16);
-            border-radius: 16px;
-            padding: 16px;
-        }
-        
-        .card h3 {
-            font-size: 1rem;
-            color: #3f356f;
-            margin-bottom: 6px;
-        }
-        
-        .card p {
-            font-size: 0.94rem;
-            line-height: 1.55;
-            color: #5c6374;
-        }
-        
-        .status {
-            margin-top: 26px;
-            background: linear-gradient(135deg, rgba(111, 99, 230, 0.08), rgba(139, 124, 246, 0.15));
-            border: 1px solid rgba(111, 99, 230, 0.2);
-            border-radius: 16px;
-            padding: 20px;
-        }
-        
-        .status h2 {
-            font-size: 1.35rem;
-            color: #30295a;
-            margin-bottom: 8px;
-        }
-        
-        .status p {
-            color: #4b5563;
-            line-height: 1.65;
-        }
-        
-        .actions {
-            margin-top: 18px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            padding: 11px 16px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .btn.primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: #fff;
-            box-shadow: 0 8px 20px rgba(111, 99, 230, 0.3);
-        }
-        
-        .btn.secondary {
-            border: 1px solid rgba(111, 99, 230, 0.35);
-            color: #3f356f;
-            background: #fff;
-        }
-        
-        .btn:hover {
-            transform: translateY(-1px);
-        }
-        
-        footer {
-            margin-top: 28px;
-            text-align: center;
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-        
-        @media (max-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .hero {
-                padding: 28px 18px;
-                border-radius: 18px;
-            }
-        }
-        
-        @media (max-width: 720px) {
-            .nav-inner {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 10px 6px;
-            }
-            .logo {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 8px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 12px;
-                justify-content: center;
-            }
-            .nav-links a {
-                font-size: 15px;
-                padding: 6px 8px;
-            }
-            .page {
-                padding-top: 34px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careers — Destnly</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--lav-lightest:#F7F5FF;--lav-light:#EDE9FE;--lav-mid:#C4B5FD;--lav-main:#8B5CF6;--lav-deep:#5B21B6;--lav-dark:#2E1065;--lav-soft:#DDD6FE;--text:#1E1433;--muted:#6B5B8C}
+    body{background:var(--lav-lightest);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:var(--lav-dark);border-bottom:1px solid rgba(255,255,255,0.08)}
+    .nav-logo-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-decoration:none}
+    .nav-logo-img{height:38px;width:auto}
+    .nav-logo-sub{font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-weight:500}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.85rem;font-weight:500;transition:color 0.2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--lav-mid)}
+    .nav-cta{background:linear-gradient(135deg,var(--lav-main),var(--lav-mid));color:white;padding:0.6rem 1.5rem;border-radius:2rem;text-decoration:none;font-size:0.83rem;font-weight:600;box-shadow:0 4px 16px rgba(139,92,246,0.4);transition:transform 0.2s}
+    .nav-cta:hover{transform:translateY(-1px)}
+    .page-wrap{max-width:860px;margin:0 auto;padding:8rem 2rem 5rem}
+    .page-card{background:white;border-radius:1.5rem;padding:3rem;box-shadow:0 4px 28px rgba(139,92,246,0.08);border:1.5px solid var(--lav-soft)}
+    footer{background:var(--lav-dark);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    footer p{font-size:0.76rem;color:rgba(255,255,255,0.28)}
+    footer a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem;margin-left:1.4rem;transition:color 0.2s}
+    footer a:hover{color:var(--lav-mid)}
+    @media(max-width:760px){nav{padding:1rem 1.4rem}.nav-links{display:none}.page-wrap{padding:6rem 1rem 3rem}.page-card{padding:1.8rem 1.2rem}footer{padding:2rem 1.4rem}div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important}div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+  </style>
 </head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
+    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html" class="">Features</a></li>
+    <li><a href="safety.html" class="">Safety</a></li>
+    <li><a href="about.html" class="">About</a></li>
+    <li><a href="careers.html" class="">Careers</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
+</nav>
 
-<body id="top">
-    <div class="page-bg"></div>
+<div class="page-wrap">
+  <div class="page-card">
+    <h1 style="font-family:Playfair Display,serif;font-size:2.4rem;font-weight:700;color:var(--lav-dark);margin-bottom:1rem">Careers at Destnly</h1>
+<p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:1rem">Build products that help people form meaningful relationships.</p>
+<p style="font-size:1rem;line-height:1.8;color:var(--muted);margin-bottom:1.8rem">We are a focused team building a trust-first dating experience. We care about product craft, user safety, and long-term quality. If you enjoy solving hard product problems with real user impact, we would like to hear from you.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2rem">
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1rem;padding:1.2rem"><strong style="color:var(--lav-dark);font-size:0.95rem">Product Mindset</strong><p style="font-size:0.84rem;color:var(--muted);margin-top:0.4rem;line-height:1.6">Work on features that improve compatibility, conversations, and user trust.</p></div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1rem;padding:1.2rem"><strong style="color:var(--lav-dark);font-size:0.95rem">Engineering Quality</strong><p style="font-size:0.84rem;color:var(--muted);margin-top:0.4rem;line-height:1.6">Ship clean, maintainable code with strong ownership and clear standards.</p></div>
+  <div style="background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1rem;padding:1.2rem"><strong style="color:var(--lav-dark);font-size:0.95rem">User Safety First</strong><p style="font-size:0.84rem;color:var(--muted);margin-top:0.4rem;line-height:1.6">Contribute to a platform where safety and respectful behavior are core design goals.</p></div>
+</div>
+<div style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(196,181,253,0.2));border:1.5px solid var(--lav-soft);border-radius:1.2rem;padding:2rem">
+  <h2 style="font-family:Playfair Display,serif;font-size:1.3rem;color:var(--lav-dark);margin-bottom:0.6rem">No open roles right now</h2>
+  <p style="font-size:0.92rem;color:var(--muted);line-height:1.7;margin-bottom:1.4rem">We are not actively hiring at this moment. You can still share your profile and we will contact you when a relevant role opens.</p>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap">
+    <a href="mailto:hr@destnly.com?subject=Career%20Inquiry%20-%20Destnly" style="display:inline-flex;align-items:center;background:linear-gradient(135deg,var(--lav-main),var(--lav-deep));color:white;padding:0.75rem 1.4rem;border-radius:0.8rem;text-decoration:none;font-weight:600;font-size:0.88rem;box-shadow:0 4px 16px rgba(139,92,246,0.3)">Send Your Resume</a>
+    <a href="mailto:hr@destnly.com" style="display:inline-flex;align-items:center;border:1.5px solid var(--lav-soft);color:var(--lav-deep);background:white;padding:0.75rem 1.4rem;border-radius:0.8rem;text-decoration:none;font-weight:600;font-size:0.88rem">Contact Recruiting</a>
+  </div>
+</div>
+  </div>
+</div>
 
-    <nav>
-        <div class="nav-inner">
-            <div class="logo">
-                <a class="logo-link" href="index.html#top" aria-label="Destnly Home">
-                    <img src="assets/images/destnly_logo_no_bg.png" alt="Destnly" width="879" height="751">
-                    <span class="logo-text">Destnly</span>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html#top">Home</a>
-                <a href="features.html">Features</a>
-                <a href="about.html">About</a>
-                <a href="safety.html">Safety</a>
-                <a href="careers.html" class="active" aria-current="page">Careers</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="page">
-        <section class="hero">
-            <span class="eyebrow">Careers at Destnly</span>
-            <h1>Build products that help people form meaningful relationships.</h1>
-            <p>
-                We are a focused team building a trust-first dating experience. We care about product craft, user safety, and long-term quality. If you enjoy solving hard product problems with real user impact, we would like to hear from you.
-            </p>
-
-            <div class="grid">
-                <article class="card">
-                    <h3>Product Mindset</h3>
-                    <p>Work on features that improve compatibility, conversations, and user trust.</p>
-                </article>
-                <article class="card">
-                    <h3>Engineering Quality</h3>
-                    <p>Ship clean, maintainable code with strong ownership and clear standards.</p>
-                </article>
-                <article class="card">
-                    <h3>User Safety First</h3>
-                    <p>Contribute to a platform where safety and respectful behavior are core design goals.</p>
-                </article>
-            </div>
-
-            <div class="status">
-                <h2>No open roles right now</h2>
-                <p>
-                    We are not actively hiring at this moment. You can still share your profile, and we will contact you when a relevant role opens.
-                </p>
-                <div class="actions">
-                    <a class="btn primary" href="mailto:hr@destnly.com?subject=Career%20Inquiry%20-%20Destnly">Send Your Resume</a>
-                    <a class="btn secondary" href="mailto:hr@destnly.com">Contact Recruiting</a>
-                </div>
-            </div>
-        </section>
-
-        <footer>© 2026 Destnly. All rights reserved.</footer>
-    </main>
+<footer>
+  <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
+  <div>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="account-deletion.html">Account Deletion</a>
+    <a href="child-safety.html">Child Safety</a>
+  </div>
+</footer>
 </body>
-
 </html>
