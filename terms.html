@@ -37,6 +37,17 @@
     footer a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem;margin-left:1.4rem;transition:color 0.2s}
     footer a:hover{color:var(--lav-mid)}
     @media(max-width:760px){nav{padding:1rem 1.4rem}.nav-links{display:none}.page-wrap{padding:6rem 1rem 3rem}.page-card{padding:1.8rem 1.2rem}footer{padding:2rem 1.4rem}}
+  
+    .community-section{margin-top:2rem;padding:1.6rem 1.5rem 1.2rem;background:linear-gradient(135deg,#faf7ff 0%,#f4efff 100%);border:1px solid var(--lav-soft);border-radius:1.1rem}
+    .community-label{display:inline-flex;align-items:center;padding:.35rem .75rem;border-radius:999px;background:var(--lav-light);color:var(--lav-deep);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem}
+    .community-section h2{margin-top:.65rem}
+    .community-section h3{margin-top:1.1rem}
+    .safety-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1.15rem 0 1.3rem}
+    .safety-card{background:#fff;border:1px solid var(--lav-soft);border-radius:.85rem;padding:.9rem 1rem;box-shadow:0 4px 15px rgba(91,33,182,.05)}
+    .safety-card strong{display:block;color:var(--lav-deep);font-size:.86rem;margin-bottom:.25rem}
+    .safety-card span{display:block;color:var(--muted);font-size:.8rem;line-height:1.6}
+    @media(max-width:600px){.safety-grid{grid-template-columns:1fr}.community-section{padding:1.25rem 1rem}}
+
   </style>
 </head>
 <body>
@@ -51,7 +62,6 @@
     <li><a href="about.html">About</a></li>
     <li><a href="careers.html">Careers</a></li>
   </ul>
-  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
 </nav>
 
 <div class="page-wrap">
@@ -112,16 +122,53 @@
       <li>Impersonation, bots, scrapers, or malware</li>
     </ul>
 
-    <h2>7. Content &amp; Intellectual Property</h2>
+    <section id="ugc-safety" class="community-section">
+      <div class="community-label">Community Safety</div>
+      <h2>8. User-Generated Content &amp; Community Safety</h2>
+      <p>Destnly includes social and community features where users may create, upload, and interact with content, including posts, questions, polls, photographs, videos, comments, and other user-generated content.</p>
+
+      <h3>User Responsibility</h3>
+      <p>Users are responsible for the content they create, upload, publish, or share through Destnly. Content must comply with these Terms, our Community Guidelines, and applicable laws.</p>
+
+      <h3>Content We Do Not Allow</h3>
+      <ul>
+        <li>Harassment, threats, intimidation, bullying, or stalking</li>
+        <li>Hate speech or content promoting discrimination or violence</li>
+        <li>Sexually explicit, pornographic, or otherwise inappropriate content</li>
+        <li>Content that sexually exploits or endangers minors</li>
+        <li>Impersonation, fraudulent identities, or misleading content</li>
+        <li>Scams, spam, phishing, fraud, or deceptive activity</li>
+        <li>Illegal content or content promoting unlawful activity</li>
+        <li>Infringement of another person's intellectual property, privacy, or other legal rights</li>
+        <li>Malicious code, harmful links, or attempts to compromise the Platform or another user's account</li>
+        <li>Content that violates these Terms, our Community Guidelines, or applicable law</li>
+      </ul>
+
+      <div class="safety-grid">
+        <div class="safety-card"><strong>Report</strong><span>Users can report inappropriate users, posts, comments, or other content through available reporting tools.</span></div>
+        <div class="safety-card"><strong>Block</strong><span>Users can block other users to prevent unwanted interactions.</span></div>
+        <div class="safety-card"><strong>Moderate</strong><span>Destnly may review reports and take appropriate action when content or behaviour violates our policies.</span></div>
+        <div class="safety-card"><strong>Enforce</strong><span>We may remove content, restrict functionality, suspend accounts, or terminate accounts where appropriate.</span></div>
+      </div>
+
+      <h3>Moderation &amp; Removal</h3>
+      <p>Destnly may use user reports, automated tools, manual review, or a combination of these methods to help identify and address content or behaviour that may violate our policies. We may remove, restrict, or disable access to content when reasonably necessary to protect users, the Platform, or our legal rights.</p>
+
+      <h3>Safety Concerns</h3>
+      <p>If you encounter content or behaviour that you believe is abusive, dangerous, unlawful, or otherwise violates these Terms, please use the available reporting tools or contact <a href="mailto:support@destnly.com">support@destnly.com</a>.</p>
+    </section>
+
+
+    <h2>8. Content &amp; Intellectual Property</h2>
     <p>All platform content belongs exclusively to Destnly. By uploading content, you grant Destnly a worldwide, royalty-free license for platform operations and promotion.</p>
 
-    <h2>8. Privacy &amp; Data Usage</h2>
+    <h2>9. Privacy &amp; Data Usage</h2>
     <p>Personal data is handled in accordance with our <a href="privacy.html">Privacy Policy</a>. Destnly may use anonymized data for service improvement or disclose information when legally required.</p>
 
-    <h2>9. Safety &amp; Risk Disclaimer</h2>
+    <h2>10. Safety &amp; Risk Disclaimer</h2>
     <p>Users acknowledge inherent risks in online and offline interactions and accept full responsibility for their actions and decisions.</p>
 
-    <h2>10. Subscriptions, Payments &amp; Renewals</h2>
+    <h2>11. Subscriptions, Payments &amp; Renewals</h2>
     <ul>
       <li>Paid services may auto-renew</li>
       <li>Cancellation must be done via account or app store</li>
@@ -129,30 +176,30 @@
       <li>Payments are non-refundable except where required by law</li>
     </ul>
 
-    <h2>11. Termination</h2>
+    <h2>12. Termination</h2>
     <p>Destnly may suspend or terminate accounts at any time and retain data for legal compliance.</p>
 
-    <h2>12. Disclaimer of Warranties</h2>
+    <h2>13. Disclaimer of Warranties</h2>
     <p>Services are provided "AS IS" without warranties, including match success or relationship outcomes.</p>
 
-    <h2>13. Limitation of Liability</h2>
+    <h2>14. Limitation of Liability</h2>
     <p>Destnly is not liable for emotional distress, financial loss, physical harm, disputes, or user misconduct to the maximum extent permitted by law.</p>
 
-    <h2>14. Indemnification</h2>
+    <h2>15. Indemnification</h2>
     <p>You agree to indemnify and hold harmless Destnly from claims arising from your use of the platform or violation of these Terms.</p>
 
-    <h2>15. Governing Law &amp; Dispute Resolution</h2>
+    <h2>16. Governing Law &amp; Dispute Resolution</h2>
     <p>These Terms are governed by the laws of India. Disputes shall be resolved through arbitration under the Arbitration and Conciliation Act, 1996.</p>
     <p>Grievance Email: <a href="mailto:grievance@destnly.com">grievance@destnly.com</a> (Response within 30 days)</p>
 
-    <h2>16. Miscellaneous</h2>
+    <h2>17. Miscellaneous</h2>
     <ul>
       <li>These Terms constitute the entire agreement</li>
       <li>Invalid provisions do not affect enforceability</li>
       <li>Failure to enforce rights does not constitute waiver</li>
     </ul>
 
-    <h2>17. Contact Information</h2>
+    <h2>18. Contact Information</h2>
     <p>Email: <a href="mailto:support@destnly.com">support@destnly.com</a></p>
 
     <p class="copy-note">© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
