@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Destnly — Find the connection meant for you</title>
+<title>Destnly | Find the connection meant for you</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
@@ -53,9 +53,9 @@ nav ul a.new::after{content:"NEW";position:absolute;top:-12px;right:-32px;font-s
 .hero p b{color:var(--purple);font-weight:600}
 .hero .cta{display:flex;gap:16px;flex-wrap:wrap}
 .hero .art{position:relative}
-.hero .art img{width:100%;max-width:646px;margin-left:auto}
+.hero .art>img{width:100%;max-width:646px;margin-left:auto}
 .float{position:absolute;background:#fff;border-radius:18px;box-shadow:0 20px 50px -18px rgba(59,7,100,.45);padding:14px 16px;display:flex;align-items:center;gap:12px;border:1px solid var(--tint)}
-.float .av{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FF7A59,#7C3AED);flex:none}
+.float .av{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FF7A59,#7C3AED);flex:none;object-fit:cover}
 .float .t{font-family:var(--h);font-weight:700;font-size:15px;color:var(--ink)}
 .float .s{font-size:13px;color:var(--body)}
 .float .s i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#089A70;margin:0 4px 1px 0}
@@ -115,7 +115,7 @@ nav ul a.new::after{content:"NEW";position:absolute;top:-12px;right:-32px;font-s
 /* mini community row */
 .crow{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:10px 12px;border:1px solid var(--tint)}
 .crow+.crow{margin-top:10px}
-.crow .av{width:44px;height:44px;border-radius:10px;flex:none}
+.crow .av{width:44px;height:44px;border-radius:10px;flex:none;object-fit:cover}
 .crow .t{font-family:var(--h);font-weight:700;font-size:14px;color:var(--ink)}
 .crow .s{font-size:12px;color:var(--body)}
 .crow .j{margin-left:auto;background:var(--purple);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px}
@@ -144,7 +144,8 @@ nav ul a.new::after{content:"NEW";position:absolute;top:-12px;right:-32px;font-s
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .ccard{border-radius:24px;overflow:hidden;background:#fff;border:1px solid #efe4fb;box-shadow:0 14px 40px -26px rgba(59,7,100,.4);transition:transform .2s}
 .ccard:hover{transform:translateY(-4px)}
-.ccard .cover{height:150px;position:relative}
+.ccard .cover{height:150px;position:relative;background:var(--tint)}
+.ccard .cover img{width:100%;height:100%;object-fit:cover;display:block}
 .ccard .cover .tag{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.92);color:var(--purple);font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px}
 .ccard .bd{padding:20px 22px 24px}
 .ccard h3{font-size:20px;margin-bottom:6px}
@@ -215,6 +216,8 @@ footer .grid{display:grid;grid-template-columns:1.4fr .8fr .8fr;gap:40px;margin-
 footer .big{font-family:var(--d);font-size:56px;font-weight:700;color:var(--purple-deep);line-height:1.1}
 footer .big span{color:var(--purple)}
 footer .social{display:flex;gap:26px;margin-top:30px}
+footer .social a{display:inline-flex;transition:transform .2s,opacity .2s}
+footer .social a:hover{transform:translateY(-2px);opacity:.8}
 footer .social svg{width:34px;height:34px;fill:var(--purple)}
 footer h4{font-family:var(--b);font-size:26px;color:var(--purple-deep);margin-bottom:22px}
 footer ul{list-style:none;display:flex;flex-direction:column;gap:14px;font-weight:500;font-size:18px;color:var(--purple-deep)}
@@ -269,24 +272,24 @@ body.legal-open{overflow:hidden}
     <li><a href="#features">Features</a></li>
     <li><a href="#safety">Safety</a></li>
   </ul>
-  <a class="btn solid sm" href="#download">Get the App</a>
+  <a class="btn solid sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Get the App</a>
 </div></div></nav>
 
 <!-- HERO -->
 <section class="hero"><div class="wrap"><div class="grid">
   <div>
-    <div class="tag">–Where Stories begin</div>
+    <div class="tag">Where Stories begin</div>
     <h1>Find the connection<br><span>meant for you.</span></h1>
-    <p>Match on what matters — then meet people the natural way, inside <b>Circles</b> built around the things you love.</p>
+    <p>Match on what matters, then meet people the natural way, inside <b>Circles</b> built around the things you love.</p>
     <div class="cta">
-      <a class="btn solid" href="#download">Download Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+      <a class="btn solid" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Download Now <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
       <a class="btn outline" href="#circle">Explore Circles</a>
     </div>
   </div>
   <div class="art">
     <img src="assets/hero-art.png" alt="Two people chatting through the Destnly app">
-    <div class="float a"><div class="av"></div><div><div class="t">Anime Fan Club</div><div class="s"><i></i>8.7K members · Active now</div></div></div>
-    <div class="float b"><div class="av"></div><div><div class="t">Today's Icebreaker</div><div class="s">12 new answers in Books &amp; Beyond</div></div></div>
+    <div class="float a"><img class="av" src="assets/circle-anime.jpg" alt=""><div><div class="t">Anime Fan Club</div><div class="s"><i></i>8.7K members · Active now</div></div></div>
+    <div class="float b"><img class="av" src="assets/circle-books.jpg" alt=""><div><div class="t">Today's Icebreaker</div><div class="s">12 new answers in Books &amp; Beyond</div></div></div>
   </div>
 </div></div></section>
 
@@ -298,9 +301,9 @@ body.legal-open{overflow:hidden}
       <h2>Your people first.<br><em>Your person follows.</em></h2>
     </div>
     <div class="lead">
-      <p>Circle is Destnly's community space. Join Circles around anime, books, music, fitness — anything you love — then post, ask, poll and play together.</p>
+      <p>Circle is Destnly's community space. Join Circles around anime, books, music, fitness, or anything else you love, then post, ask, poll and play together.</p>
       <p>Conversations start around shared interests, so when a connection happens it feels natural, not forced.</p>
-      <div class="cta"><a class="btn white" href="#download">Join a Circle</a><a class="btn ghost" href="#how">See how it works</a></div>
+      <div class="cta"><a class="btn white" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Join a Circle</a><a class="btn ghost" href="#how">See how it works</a></div>
     </div>
   </div>
 
@@ -311,10 +314,10 @@ body.legal-open{overflow:hidden}
   </div>
 
   <div class="pillars">
-    <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Explore Circles</h3><p>Browse communities by interest — Anime Fan Club, Books &amp; Beyond, Music Masti — and join in one tap.</p></div>
+    <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Explore Circles</h3><p>Browse communities by interest, like Anime Fan Club, Books &amp; Beyond or Music Masti, and join in one tap.</p></div>
     <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></div><h3>Post, Ask, Poll, Media</h3><p>Share a thought, ask the group, run a poll or drop a photo. Every Circle has its own living feed.</p></div>
     <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M9 20h6M10 17h4a5 5 0 1 0-4 0z"/></svg></div><h3>Today's Icebreaker</h3><p>A fresh prompt every day. Answer anonymously and find out who thinks the way you do.</p></div>
-    <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-1l-2-2H9l-2 2H6a4 4 0 0 1-4-4v-2a4 4 0 0 1 4-4z"/><path d="M8 12v4M6 14h4M16 13h.01M18 15h.01"/></svg></div><h3>Fun Break</h3><p>Tiny games for cozy moments — play together, lighten the mood and let the chat flow.</p></div>
+    <div class="pillar"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 9h12a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4h-1l-2-2H9l-2 2H6a4 4 0 0 1-4-4v-2a4 4 0 0 1 4-4z"/><path d="M8 12v4M6 14h4M16 13h.01M18 15h.01"/></svg></div><h3>Fun Break</h3><p>Tiny games for cozy moments. Play together, lighten the mood and let the chat flow.</p></div>
   </div>
 </div></section>
 <div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 0h1440v30c-220 80-480 100-720 60S220 50 0 90z" fill="#FAF5FF"/></svg>
@@ -325,21 +328,21 @@ body.legal-open{overflow:hidden}
   <div class="top">
     <div class="eyebrow"><span class="dot"></span>How Circle works</div>
     <h2>From shared interest to real conversation.</h2>
-    <p>Three small steps — no cold openers, no pressure. Just people who already have something in common.</p>
+    <p>Three small steps. No cold openers, no pressure. Just people who already have something in common.</p>
   </div>
   <div class="steps">
     <div class="step">
       <div class="n">STEP 01</div><h3>Join a Circle</h3>
       <p>Pick the communities that match your vibe. Join public Circles, or create your own and invite people in.</p>
       <div class="demo">
-        <div class="crow"><div class="av" style="background:linear-gradient(135deg,#FF7A59,#7C3AED)"></div><div><div class="t">Anime Fan Club</div><div class="s">8.7K members</div></div><div class="j o">Joined</div></div>
-        <div class="crow"><div class="av" style="background:linear-gradient(135deg,#F59E0B,#B45309)"></div><div><div class="t">Books &amp; Beyond</div><div class="s">6.7K members</div></div><div class="j">Join</div></div>
-        <div class="crow"><div class="av" style="background:linear-gradient(135deg,#1D4ED8,#EC4899)"></div><div><div class="t">Music Masti</div><div class="s">6.7K members</div></div><div class="j">Join</div></div>
+        <div class="crow"><img class="av" src="assets/circle-anime.jpg" alt=""><div><div class="t">Anime Fan Club</div><div class="s">8.7K members</div></div><div class="j o">Joined</div></div>
+        <div class="crow"><img class="av" src="assets/circle-books.jpg" alt=""><div><div class="t">Books &amp; Beyond</div><div class="s">6.7K members</div></div><div class="j">Join</div></div>
+        <div class="crow"><img class="av" src="assets/circle-music.jpg" alt=""><div><div class="t">Music Masti</div><div class="s">6.7K members</div></div><div class="j">Join</div></div>
       </div>
     </div>
     <div class="step">
       <div class="n">STEP 02</div><h3>Break the ice</h3>
-      <p>Answer today's icebreaker, vote in a poll, or reply to a post. You're already talking — about something you both care about.</p>
+      <p>Answer today's icebreaker, vote in a poll, or reply to a post. You're already talking about something you both care about.</p>
       <div class="demo">
         <div class="ice"><div class="k">TODAY'S ICEBREAKER</div><div class="q">Which fictional character do you relate to most?</div><span class="a">Answer anonymously</span></div>
         <div class="poll"><div class="q">Which anime should we post about next?</div>
@@ -350,11 +353,11 @@ body.legal-open{overflow:hidden}
     </div>
     <div class="step">
       <div class="n">STEP 03</div><h3>Take it one-to-one</h3>
-      <p>Found someone who gets you? Move from the Circle chat to a private conversation — verified profiles only.</p>
+      <p>Found someone who gets you? Move from the Circle chat to a private conversation with verified profiles only.</p>
       <div class="demo chat">
         <div class="from">Neha · Anime Fan Club</div>
         <div class="m">Hey! Loved your take on Death Note 👀</div>
-        <div class="m me">Haha thank you — you're a Your Name fan, right?</div>
+        <div class="m me">Haha thank you! You're a Your Name fan, right?</div>
         <div class="m">Guilty. Want to continue this over chat?</div>
       </div>
     </div>
@@ -365,13 +368,13 @@ body.legal-open{overflow:hidden}
 <section class="love"><div class="wrap">
   <div class="top">
     <div><div class="eyebrow"><span class="dot"></span>Circles people love</div><h2>Find a Circle that matches your vibe.</h2></div>
-    <a class="btn outline" href="#download">Browse all Circles</a>
+    <a class="btn outline" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Browse all in the app ↗</a>
   </div>
   <div class="cards">
-    <div class="ccard"><div class="cover" style="background:linear-gradient(135deg,#FF7A59,#7C3AED)"><span class="tag">Anime</span></div><div class="bd"><h3>Anime Fan Club</h3><div class="meta"><span>8.7K members</span><span><i></i>Active now</span></div><div class="chips"><span>Manga</span><span>Anime</span></div><a class="btn solid" href="#download">Join Circle</a></div></div>
-    <div class="ccard"><div class="cover" style="background:linear-gradient(135deg,#F59E0B,#B45309)"><span class="tag">Books</span></div><div class="bd"><h3>Books &amp; Beyond</h3><div class="meta"><span>6.7K members</span><span><i></i>Active now</span></div><div class="chips"><span>Fiction</span><span>Book club</span></div><a class="btn solid" href="#download">Join Circle</a></div></div>
-    <div class="ccard"><div class="cover" style="background:linear-gradient(135deg,#1D4ED8,#EC4899)"><span class="tag">Music</span></div><div class="bd"><h3>Music Masti</h3><div class="meta"><span>6.7K members</span><span><i></i>Active now</span></div><div class="chips"><span>Indie</span><span>Live gigs</span></div><a class="btn solid" href="#download">Join Circle</a></div></div>
-    <div class="ccard create"><div class="plus">+</div><h3>Create your own Circle</h3><p>Start a community around anything — your city, your fandom, your 5 a.m. run club.</p><a class="btn outline sm" href="#download">Create Circle</a></div>
+    <div class="ccard"><div class="cover"><img src="assets/circle-anime.jpg" alt="Wall of anime posters"><span class="tag">Anime</span></div><div class="bd"><h3>Anime Fan Club</h3><div class="meta"><span>8.7K members</span><span><i></i>Active now</span></div><div class="chips"><span>Manga</span><span>Anime</span></div><a class="btn solid" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Join Circle</a></div></div>
+    <div class="ccard"><div class="cover"><img src="assets/circle-books.jpg" alt="Curved library shelves full of books"><span class="tag">Books</span></div><div class="bd"><h3>Books &amp; Beyond</h3><div class="meta"><span>6.7K members</span><span><i></i>Active now</span></div><div class="chips"><span>Fiction</span><span>Book club</span></div><a class="btn solid" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Join Circle</a></div></div>
+    <div class="ccard"><div class="cover"><img src="assets/circle-music.jpg" alt="DJ mixing on a deck under purple lights"><span class="tag">Music</span></div><div class="bd"><h3>Music Masti</h3><div class="meta"><span>6.7K members</span><span><i></i>Active now</span></div><div class="chips"><span>Indie</span><span>Live gigs</span></div><a class="btn solid" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Join Circle</a></div></div>
+    <div class="ccard create"><div class="plus">+</div><h3>Create your own Circle</h3><p>Start a community around anything: your city, your fandom, your 5 a.m. run club.</p><a class="btn outline sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Create in the app ↗</a></div>
   </div>
 </div></section>
 
@@ -380,8 +383,8 @@ body.legal-open{overflow:hidden}
   <img src="assets/about-phones.png" alt="Destnly app screens" style="width:100%;max-width:560px;justify-self:center">
   <div>
     <h2>About Destnly</h2>
-    <p>Destnly helps you build meaningful relationships based on values, compatibility, and genuine intent — not endless swiping.</p>
-    <p>We created Destnly for people who are tired of endless swiping and shallow matches — designed for those who want clarity, respect, and real emotional connection. Circle takes that one step further: meet people through what you love, not just how you look.</p>
+    <p>Destnly helps you build meaningful relationships based on values, compatibility, and genuine intent, not endless swiping.</p>
+    <p>We created Destnly for people who are tired of endless swiping and shallow matches. It is designed for those who want clarity, respect, and real emotional connection. Circle takes that one step further: meet people through what you love, not just how you look.</p>
     <div class="stat"><div><b>Explore</b><span>Compatibility-first matching</span></div><div><b>Circle</b><span>Interest-based communities</span></div><div><b>Chat</b><span>Verified, moderated conversations</span></div></div>
   </div>
 </div></div></section>
@@ -392,7 +395,7 @@ body.legal-open{overflow:hidden}
   <div class="fgrid">
     <div class="fcard hi"><span class="badge">CIRCLE</span><img src="assets/icon-communities.png" alt=""><h3>Interest-Based Communities</h3><p>Join communities around your hobbies, careers, and passions to meet like-minded people naturally.</p><a class="link" href="#circle">Explore Circle →</a></div>
     <div class="fcard"><img src="assets/icon-conversations.png" alt=""><h3>Meaningful Conversations</h3><p>Guided discussion topics and daily icebreakers help you start conversations that go far beyond a simple 'Hi'.</p></div>
-    <div class="fcard"><img src="assets/icon-matching.png" alt=""><h3>Compatibility-First Matching</h3><p>We match you based on values, personality, interests, and long-term goals — for connections that last.</p></div>
+    <div class="fcard"><img src="assets/icon-matching.png" alt=""><h3>Compatibility-First Matching</h3><p>We match you based on values, personality, interests, and long-term goals, for connections that last.</p></div>
     <div class="fcard"><img src="assets/icon-privacy.png" alt=""><h3>Privacy &amp; Safety</h3><p>You're in control. Manage your visibility and enjoy advanced safety features with complete peace of mind.</p></div>
     <div class="fcard"><img src="assets/icon-verified.png" alt=""><h3>Verified Profiles</h3><p>Every profile is verified to ensure authenticity and build a community you can trust.</p></div>
     <div class="fcard"><img src="assets/icon-respect.png" alt=""><h3>Respectful Community</h3><p>Clear guidelines, AI moderation, and easy reporting tools help us keep every Circle positive and inclusive.</p></div>
@@ -414,7 +417,7 @@ body.legal-open{overflow:hidden}
       <div class="srow"><svg viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z"/><path d="M10 21h4"/></svg><div><h3>Report &amp; Block</h3><p>Block or report in one tap.</p></div></div>
       <div class="srow"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><div><h3>Privacy First</h3><p>Your profile. Your privacy. Your control.</p></div></div>
       <div class="srow"><svg viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 10.6A2 2 0 0 0 13.4 13.4M9.9 5.1A10 10 0 0 1 21 12a10.6 10.6 0 0 1-2.6 3.5M6.6 6.6A10.6 10.6 0 0 0 3 12s3.5 6 9 6a8.6 8.6 0 0 0 3.4-.7"/></svg><div><h3>Safe Chats</h3><p>Protected conversations with smart moderation.</p></div></div>
-      <div class="srow circle-row"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19a6 6 0 0 1 12 0M14 19a4.5 4.5 0 0 1 7 0"/></svg><div><h3>Moderated Circles <span class="lab">CIRCLE</span></h3><p>Every Circle has clear guidelines, AI moderation and one-tap reporting for posts and profiles — so the space stays welcoming for everyone.</p></div></div>
+      <div class="srow circle-row"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19a6 6 0 0 1 12 0M14 19a4.5 4.5 0 0 1 7 0"/></svg><div><h3>Moderated Circles <span class="lab">CIRCLE</span></h3><p>Every Circle has clear guidelines, AI moderation and one-tap reporting for posts and profiles, so the space stays welcoming for everyone.</p></div></div>
     </div>
     <img src="assets/safety-art.png" alt="Couple protected by a shield">
   </div>
@@ -426,15 +429,16 @@ body.legal-open{overflow:hidden}
     <div>
       <div class="big">Find the connection<br><span>meant for you.</span></div>
       <div class="social">
-        <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-6.6L6 22H2.9l7.5-8.6L2.5 2h6.6l4.5 6zM17.8 20h1.7L7.3 3.9H5.4z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.3 16 2.2C14.4 2 9.6 2 8 2.2 6.4 2.3 5 2.6 3.8 3.8S2.3 6.4 2.2 8C2 9.6 2 14.4 2.2 16c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.2 6.4.2 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.4.1-8zm-2.2 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.9.4s-4.6.1-5.9-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.9s-.1-4.6.4-5.9a3.2 3.2 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.9-.4s4.6-.1 5.9.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.9s.1 4.6-.4 5.9z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3zM6.5 8.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.6z"/></svg>
+        <a href="https://x.com/destnly_handle?s=11" target="_blank" rel="noopener" aria-label="Destnly on X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-6.6L6 22H2.9l7.5-8.6L2.5 2h6.6l4.5 6zM17.8 20h1.7L7.3 3.9H5.4z"/></svg></a>
+        <a href="https://www.instagram.com/destnly_official?stkn=MWhlbHhtbW5sdHd3cA%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="Destnly on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.3 16 2.2C14.4 2 9.6 2 8 2.2 6.4 2.3 5 2.6 3.8 3.8S2.3 6.4 2.2 8C2 9.6 2 14.4 2.2 16c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.2 6.4.2 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.4.1-8zm-2.2 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.9.4s-4.6.1-5.9-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.9s-.1-4.6.4-5.9a3.2 3.2 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.9-.4s4.6-.1 5.9.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.9s.1 4.6-.4 5.9z"/></svg></a>
+        <a href="https://www.linkedin.com/in/destnly-main-a7b57238b/" target="_blank" rel="noopener" aria-label="Destnly on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3zM6.5 8.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.6z"/></svg></a>
+        <a href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener" aria-label="Get Destnly on Google Play"><svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2zM16.1 15.6l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.7 2.1zM16.2 15.5 13 12.3l-9.4 9.4c.4.4.9.4 1.6.1l11-6.3M16.2 8.5l-11-6.3c-.7-.4-1.2-.3-1.6.1L13 12z"/></svg></a>
       </div>
     </div>
     <div><h4>Menu</h4><ul><li><a href="#about">About</a></li><li><a href="#circle">Circle</a></li><li><a href="#features">Features</a></li><li><a href="#safety">Safety</a></li><li><a href="#">Contact Us</a></li></ul></div>
     <div><h4>Legal</h4><ul><li><a href="#privacy" data-legal="privacy">Privacy Policy</a></li><li><a href="#terms" data-legal="terms">Terms &amp; Conditions</a></li><li><a href="#">Account Deletion</a></li><li><a href="#">Child Safety</a></li></ul></div>
   </div>
-  <div class="rule"><small>© 2026 Destnly Private Limited</small><a class="btn solid sm" href="#">Download Now ↓</a></div>
+  <div class="rule"><small>© 2026 Destnly Private Limited</small><a class="btn solid sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Download Now ↓</a></div>
   <div class="word">Destnly</div>
 </div></footer>
 
