@@ -1,106 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Account Deletion — Destnly</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--lav-lightest:#F7F5FF;--lav-mid:#C4B5FD;--lav-main:#8B5CF6;--lav-deep:#5B21B6;--lav-dark:#2E1065;--lav-soft:#DDD6FE;--text:#1E1433;--muted:#6B5B8C}
-    body{background:var(--lav-lightest);color:var(--text);font-family:'Nunito',sans-serif;overflow-x:hidden}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:var(--lav-dark);border-bottom:1px solid rgba(255,255,255,0.08)}
-    .nav-logo-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-decoration:none}
-    .nav-logo-img{height:38px;width:auto}
-    .nav-logo-sub{font-size:0.6rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.38);font-weight:500}
-    .nav-links{display:flex;gap:2rem;list-style:none}
-    .nav-links a{text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.85rem;font-weight:500;transition:color 0.2s}
-    .nav-links a:hover{color:var(--lav-mid)}
-    .nav-cta{background:linear-gradient(135deg,var(--lav-main),var(--lav-mid));color:white;padding:0.6rem 1.5rem;border-radius:2rem;text-decoration:none;font-size:0.83rem;font-weight:600;box-shadow:0 4px 16px rgba(139,92,246,0.4)}
-    .page-wrap{max-width:780px;margin:0 auto;padding:8rem 2rem 5rem}
-    .page-card{background:white;border-radius:1.5rem;padding:3rem;box-shadow:0 4px 28px rgba(139,92,246,0.08);border:1.5px solid var(--lav-soft)}
-    .page-card h1{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--lav-dark);margin-bottom:0.4rem}
-    .meta{font-size:0.8rem;color:var(--muted);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--lav-soft)}
-    .page-card h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--lav-dark);margin:2rem 0 0.7rem}
-    .page-card p{font-size:0.92rem;line-height:1.8;color:var(--muted);margin-bottom:0.8rem}
-    .page-card ul{padding-left:1.4rem;margin-bottom:1rem}
-    .page-card li{font-size:0.92rem;line-height:1.75;color:var(--muted);margin-bottom:0.35rem}
-    .page-card a{color:var(--lav-main);text-decoration:underline}
-    .steps-box{background:var(--lav-lightest);border:1.5px solid var(--lav-soft);border-radius:1rem;padding:1.5rem 1.8rem;margin:1rem 0 1.5rem}
-    .steps-box ol{padding-left:1.4rem}
-    .steps-box li{font-size:0.92rem;line-height:1.8;color:var(--muted);margin-bottom:0.4rem}
-    .copy-note{font-size:0.78rem;color:rgba(107,91,140,0.5);margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--lav-soft)}
-    footer{background:var(--lav-dark);padding:2.5rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-    footer p{font-size:0.76rem;color:rgba(255,255,255,0.28)}
-    footer a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.76rem;margin-left:1.4rem}
-    footer a:hover{color:var(--lav-mid)}
-    @media(max-width:760px){nav{padding:1rem 1.4rem}.nav-links{display:none}.page-wrap{padding:6rem 1rem 3rem}.page-card{padding:1.8rem 1.2rem}footer{padding:2rem 1.4rem}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Account Deletion | Destnly</title>
+<meta name="description" content="How to delete your Destnly account from the app or by email, what is deleted, and what may be retained.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo-wrap">
-    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
-    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="features.html">Features</a></li>
-    <li><a href="safety.html">Safety</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="careers.html">Careers</a></li>
+
+<!-- NAV -->
+<nav><div class="wrap"><div class="bar">
+  <a class="brand" href="destnly-website-circle.html"><img src="assets/logo.png" alt="Destnly"></a>
+  <ul>
+    <li><a href="destnly-website-circle.html#about">About</a></li>
+    <li><a href="destnly-website-circle.html#circle" class="new">Circle</a></li>
+    <li><a href="destnly-website-circle.html#features">Features</a></li>
+    <li><a href="destnly-website-circle.html#safety">Safety</a></li>
   </ul>
-  <a href="https://play.google.com/store/apps/details?id=com.destnlyapp&hl=en_IN" class="nav-cta">Get the App</a>
-</nav>
+  <a class="btn solid sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Get the App</a>
+</div></div></nav>
 
-<div class="page-wrap">
-  <div class="page-card">
-    <h1>Account Deletion &amp; Data Removal</h1>
-    <div class="meta">Effective Date: 1st January 2026</div>
+<!-- PAGE HEADER -->
+<header class="lp-hero"><div class="wrap">
+  <span class="eyebrow"><span class="dot"></span>Legal</span>
+  <h1>Account Deletion</h1>
+  <div class="meta"><b>Last Updated:</b> September 2026 &nbsp;·&nbsp; <b>Applies to:</b> Destnly website &amp; mobile apps</div>
+</div></header>
 
-    <h2>How to Delete Your Account</h2>
-    <div class="steps-box">
-      <ol>
-        <li>Open the Destnly app and log in to your account.</li>
-        <li>Go to the <strong>Settings</strong> tab from the bottom navigation bar.</li>
-        <li>In the Settings tab, tap on <strong>Delete Account</strong>.</li>
-        <li>Follow the on-screen instructions to confirm and complete your account deletion.</li>
-        <li>If you face any issues, email <a href="mailto:support@destnly.com">support@destnly.com</a> from your registered email address with the subject "Account Deletion Request".</li>
-      </ol>
+<!-- CONTENT -->
+<main><div class="wrap"><div class="lp">
+    <aside class="lp-nav">
+      <h4>Legal</h4>
+      <a href="privacy.html"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privacy Policy</a>
+      <a href="terms.html"><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>Terms &amp; Conditions</a>
+      <a href="child-safety.html"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Child Safety</a>
+      <a href="account-deletion.html" class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M17 5l4 4M21 5l-4 4"/></svg>Account Deletion</a>
+      <div class="help">Questions about any of these policies? Email <a href="mailto:contact@destnly.com">contact@destnly.com</a>.</div>
+    </aside>
+    <article class="lp-body">
+      <p class="intro">Destnly gives users control over their accounts and associated personal information. If you no longer wish to use Destnly, you can request deletion of your account and associated data.</p>
+      <div class="notice"><div class="ic">✓</div><div><strong>No login required.</strong><br>You can request deletion from inside the app, or by email if you no longer have access to the app. Both options are described below.</div></div>
+
+      <h2>1. How to Delete Your Destnly Account</h2>
+      <h3>Option 1 — Delete Your Account From the Destnly App</h3>
+      <p>You can request account deletion directly from within the Destnly application:</p>
+      <div class="path"><span>Destnly App</span><i>→</i><span>Profile / Settings</span><i>→</i><span>Account</span><i>→</i><span class="end">Delete Account</span></div>
+      <p>Follow the instructions displayed in the application to complete the account deletion process.</p>
+      <h3>Option 2 — Request Account Deletion Online</h3>
+      <p>If you no longer have access to the Destnly application, you can request account deletion by contacting us at:</p>
+      <div class="callout">
+        <strong>Email us</strong>
+        <a href="mailto:contact@destnly.com?subject=ACCOUNT%20DELETION%20REQUEST">contact@destnly.com</a><br>
+        Subject line: <span class="subject">ACCOUNT DELETION REQUEST</span>
+      </div>
+      <p>Please include the email address or phone number associated with your Destnly account so that we can identify and process your request.</p>
+
+      <h2>2. What Happens When You Delete Your Account?</h2>
+      <p>Once the account deletion process is completed, Destnly will delete or anonymize personal information associated with the account, subject to applicable legal and regulatory requirements. This includes:</p>
+      <ul>
+        <li>User profile information.</li>
+        <li>Name and profile details.</li>
+        <li>Profile photographs and videos.</li>
+        <li>Matches and connections.</li>
+        <li>Messages and conversations, where applicable.</li>
+        <li>Posts and other user-generated content.</li>
+        <li>User preferences.</li>
+        <li>Associated account information.</li>
+      </ul>
+
+      <h2>3. Information That May Be Retained</h2>
+      <p>Certain information may need to be retained for a limited period where required or permitted by applicable law, including for:</p>
+      <ul>
+        <li>Legal and regulatory compliance.</li>
+        <li>Fraud prevention.</li>
+        <li>Security and abuse prevention.</li>
+        <li>Dispute resolution.</li>
+        <li>Enforcement of our Terms and policies.</li>
+        <li>Compliance with lawful requests from authorities.</li>
+      </ul>
+      <p>Where information is retained for these purposes, it will be retained only for the period reasonably necessary for the applicable purpose. See our <a href="privacy.html">Privacy Policy</a> for more on data retention.</p>
+
+      <h2>4. Account Deletion Is Permanent</h2>
+      <div class="notice warn"><div class="ic">!</div><div><strong>Account deletion is permanent once completed and cannot be undone.</strong><br>Simply uninstalling or deleting the Destnly application from your device does <strong>not</strong> automatically delete your Destnly account. You must use one of the account-deletion methods described on this page.</div></div>
+
+      <h2>5. Subscriptions and Payments</h2>
+      <p>Deleting your Destnly account does not necessarily cancel subscriptions or payments made through Google Play or another payment provider.</p>
+      <p>If you have an active subscription, you should cancel the subscription through the applicable payment provider before deleting your account.</p>
+
+      <h2>6. Need Help?</h2>
+      <p>If you are unable to delete your account or need assistance with the account-deletion process, please contact us:</p>
+      <div class="contact">
+        <h3>Destnly Support</h3>
+        <p><strong>Email:</strong> <a href="mailto:contact@destnly.com?subject=ACCOUNT%20DELETION%20REQUEST">contact@destnly.com</a><br><strong>Subject line:</strong> <span class="subject">ACCOUNT DELETION REQUEST</span></p>
+      </div>
+      <p class="copy">© 2026 Destnly Private Limited. All rights reserved.</p>
+    </article>
+</div></div></main>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="grid">
+    <div>
+      <div class="big">Find the connection<br><span>meant for you.</span></div>
+      <div class="social">
+        <a href="https://x.com/destnly_handle?s=11" target="_blank" rel="noopener" aria-label="Destnly on X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-6.6L6 22H2.9l7.5-8.6L2.5 2h6.6l4.5 6zM17.8 20h1.7L7.3 3.9H5.4z"/></svg></a>
+        <a href="https://www.instagram.com/destnly_official?stkn=MWhlbHhtbW5sdHd3cA%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="Destnly on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.3 16 2.2C14.4 2 9.6 2 8 2.2 6.4 2.3 5 2.6 3.8 3.8S2.3 6.4 2.2 8C2 9.6 2 14.4 2.2 16c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.2 6.4.2 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.4.1-8zm-2.2 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.9.4s-4.6.1-5.9-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.9s-.1-4.6.4-5.9a3.2 3.2 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.9-.4s4.6-.1 5.9.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.9s.1 4.6-.4 5.9z"/></svg></a>
+        <a href="https://www.linkedin.com/in/destnly-main-a7b57238b/" target="_blank" rel="noopener" aria-label="Destnly on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3zM6.5 8.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.6z"/></svg></a>
+        <a href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener" aria-label="Get Destnly on Google Play"><svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2zM16.1 15.6l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.7 2.1zM16.2 15.5 13 12.3l-9.4 9.4c.4.4.9.4 1.6.1l11-6.3M16.2 8.5l-11-6.3c-.7-.4-1.2-.3-1.6.1L13 12z"/></svg></a>
+      </div>
     </div>
-
-    <h2>What Happens After Deletion?</h2>
-    <ul>
-      <li>Your profile, matches, messages, and all personal data will be permanently deleted from Destnly's systems within <strong>30 days</strong> of your deletion request, unless a shorter period is required by law.</li>
-      <li>Some data may be retained for a limited time if required by law or for legitimate business purposes (such as fraud prevention or legal compliance).</li>
-      <li>Active subscriptions must be cancelled separately via Google Play Store or Apple App Store. Deleting your account does <strong>not</strong> automatically cancel subscriptions.</li>
-      <li>After deletion, your data cannot be recovered.</li>
-    </ul>
-
-    <h2>Google Play Store User Rights</h2>
-    <ul>
-      <li>Destnly complies with Google Play's account deletion and data removal requirements.</li>
-      <li>Users can request deletion of their account and associated data at any time.</li>
-      <li>For any privacy or data-related concerns, contact <a href="mailto:privacy@destnly.com">privacy@destnly.com</a>.</li>
-    </ul>
-
-    <h2>Contact for Account Deletion</h2>
-    <p>Support: <a href="mailto:support@destnly.com">support@destnly.com</a></p>
-    <p>Privacy: <a href="mailto:privacy@destnly.com">privacy@destnly.com</a></p>
-
-    <p class="copy-note">© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
+    <div><h4>Menu</h4><ul><li><a href="destnly-website-circle.html#about">About</a></li><li><a href="destnly-website-circle.html#circle">Circle</a></li><li><a href="destnly-website-circle.html#features">Features</a></li><li><a href="destnly-website-circle.html#safety">Safety</a></li><li><a href="#">Contact Us</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="child-safety.html">Child Safety</a></li><li><a href="account-deletion.html">Account Deletion</a></li></ul></div>
   </div>
-</div>
+  <div class="rule"><small>© 2026 Destnly Private Limited</small><a class="btn solid sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Download Now ↓</a></div>
+  <div class="word">Destnly</div>
+</div></footer>
 
-<footer>
-  <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
-  <div>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-    <a href="account-deletion.html">Account Deletion</a>
-    <a href="child-safety.html">Child Safety</a>
-  </div>
-</footer>
 </body>
 </html>
