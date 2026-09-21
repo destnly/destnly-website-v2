@@ -1,353 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Destnly Privacy Policy — how we collect, use, protect, share, and delete information."/>
-  <title>Privacy Policy — Destnly</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --lavest:#faf8ff;--lav-light:#f2edff;--lav-soft:#e4d9ff;--lav-mid:#c5a9ff;
-      --purple:#7627b8;--purple2:#5d1d93;--deep:#27113f;--text:#342642;--muted:#6f6480;
-      --green:#26734d;--green-bg:#effaf4;--white:#fff;--line:#eadff5;
-      --shadow:0 18px 55px rgba(77,32,116,.10)
-    }
-    html{scroll-behavior:smooth}
-    body{background:linear-gradient(180deg,#fbf9ff 0%,#f7f3ff 100%);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7}
-    a{color:var(--purple);text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    nav{
-      position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
-      padding:15px clamp(20px,5vw,72px);background:rgba(39,17,63,.96);backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(255,255,255,.09)
-    }
-    .nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .nav-logo-img{height:37px;width:auto}
-    .nav-logo-sub{font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.48);font-weight:500}
-    .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
-    .nav-links a{color:rgba(255,255,255,.72);font-size:13px;font-weight:500}
-    .nav-links a:hover{color:#fff;text-decoration:none}
-    .nav-cta{background:linear-gradient(135deg,#8b43d1,#b98aff);color:#fff!important;padding:9px 18px;border-radius:999px;box-shadow:0 7px 22px rgba(151,79,210,.28)}
-    .nav-cta:hover{transform:translateY(-1px)}
-
-    .hero{max-width:1080px;margin:0 auto;padding:72px 24px 30px}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--lav-light);border:1px solid var(--lav-soft);color:var(--purple2);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
-    .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#9b57d1}
-    .hero h1{font-family:'Playfair Display',serif;color:var(--deep);font-size:clamp(40px,5vw,62px);line-height:1.08;margin-top:18px;letter-spacing:-.02em}
-    .hero p{max-width:720px;color:var(--muted);font-size:17px;margin-top:16px}
-    .hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-    .meta-pill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 13px;font-size:12px;color:var(--muted);box-shadow:0 4px 15px rgba(77,32,116,.04)}
-    .meta-pill strong{color:var(--text)}
-
-    .layout{max-width:1080px;margin:0 auto;padding:20px 24px 70px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:28px;align-items:start}
-    .toc{position:sticky;top:92px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 30px rgba(77,32,116,.05)}
-    .toc-title{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--purple2);font-weight:700;margin-bottom:10px}
-    .toc a{display:block;color:var(--muted);font-size:13px;padding:7px 8px;border-radius:8px}
-    .toc a:hover{background:var(--lav-light);color:var(--purple2);text-decoration:none}
-    .policy{background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
-    .policy-inner{padding:40px 46px}
-    .intro{font-size:16px;color:#574c67;line-height:1.85}
-    .notice{display:flex;gap:14px;background:var(--green-bg);border:1px solid #ccebd9;border-radius:16px;padding:17px 18px;margin:25px 0;color:#35664d;font-size:14px}
-    .notice-icon{width:28px;height:28px;min-width:28px;border-radius:50%;display:grid;place-items:center;background:#d7f3e3;color:var(--green);font-weight:800}
-    section{padding:30px 0;border-top:1px solid var(--line)}
-    section:first-of-type{border-top:0;padding-top:28px}
-    h2{font-family:'Playfair Display',serif;color:var(--deep);font-size:24px;line-height:1.25;margin-bottom:13px}
-    h3{color:var(--purple2);font-size:15px;margin:20px 0 8px}
-    p{font-size:14px;color:var(--muted);margin-bottom:11px}
-    ul{padding-left:20px;margin:9px 0 13px}
-    li{font-size:14px;color:var(--muted);margin:6px 0}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:16px}
-    .info-card{background:#fcfaff;border:1px solid var(--line);border-radius:14px;padding:16px}
-    .info-card strong{display:block;color:var(--text);font-size:14px;margin-bottom:4px}
-    .info-card span{font-size:13px;color:var(--muted)}
-    .callout{background:linear-gradient(135deg,#f7f0ff,#fbf9ff);border:1px solid #dec9f7;border-radius:16px;padding:19px;margin-top:17px}
-    .callout strong{display:block;color:var(--purple2);font-size:14px;margin-bottom:5px}
-    .contact{background:var(--deep);border-radius:18px;padding:23px;color:#fff;margin-top:20px}
-    .contact h3{color:#d8bfff;margin-top:0}
-    .contact p{color:rgba(255,255,255,.68)}
-    .contact a{color:#d8bfff}
-    .copy-note{font-size:12px;color:#988ba8;text-align:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
-    footer{background:var(--deep);padding:28px clamp(20px,5vw,72px);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
-    footer p{margin:0;color:rgba(255,255,255,.42);font-size:12px}
-    footer a{color:rgba(255,255,255,.58);font-size:12px;margin-left:20px}
-    footer a:hover{color:#fff}
-    @media(max-width:860px){
-      .nav-links{display:none}.nav-logo-sub{display:none}
-      .hero{padding-top:48px}.layout{grid-template-columns:1fr}
-      .toc{position:relative;top:auto}.toc a{display:inline-block;margin-right:4px}
-      .policy-inner{padding:28px 22px}.grid{grid-template-columns:1fr}
-    }
-    @media(max-width:520px){
-      nav{padding:13px 16px}.nav-logo-img{height:33px}.nav-cta{padding:8px 13px;font-size:12px}
-      .hero{padding:40px 17px 18px}.layout{padding:10px 17px 45px}.hero p{font-size:15px}
-      .policy{border-radius:18px}.policy-inner{padding:24px 18px}
-      h2{font-size:21px}p,li{font-size:13.5px}footer{padding:24px 17px}
-      footer div{width:100%}footer a{margin:0 16px 0 0}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy | Destnly</title>
+<meta name="description" content="How Destnly collects, uses, shares and protects your personal information.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo-wrap">
-    <img src="logo.png" alt="Destnly" class="nav-logo-img"/>
-    <span class="nav-logo-sub">by Nexquard Technology Pvt Ltd</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="features.html">Features</a></li>
-    <li><a href="safety.html">Safety</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="careers.html">Careers</a></li>
+
+<!-- NAV -->
+<nav><div class="wrap"><div class="bar">
+  <a class="brand" href="destnly-website-circle.html"><img src="assets/logo.png" alt="Destnly"></a>
+  <ul>
+    <li><a href="destnly-website-circle.html#about">About</a></li>
+    <li><a href="destnly-website-circle.html#circle" class="new">Circle</a></li>
+    <li><a href="destnly-website-circle.html#features">Features</a></li>
+    <li><a href="destnly-website-circle.html#safety">Safety</a></li>
   </ul>
-</nav>
+  <a class="btn solid sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Get the App</a>
+</div></div></nav>
 
-<header class="hero">
-  <span class="eyebrow"><span class="dot"></span> Privacy at Destnly</span>
+<!-- PAGE HEADER -->
+<header class="lp-hero"><div class="wrap">
+  <span class="eyebrow"><span class="dot"></span>Legal</span>
   <h1>Privacy Policy</h1>
-  <p>We believe meaningful connections should come with clear privacy choices. This policy explains what information Destnly collects, why we use it, how it is protected, and how you can manage or delete your information.</p>
-  <div class="hero-meta">
-    <span class="meta-pill"><strong>Effective:</strong> 1 January 2026</span>
-    <span class="meta-pill"><strong>Applies to:</strong> Destnly website & mobile apps</span>
-  </div>
-</header>
+  <div class="meta"><b>Effective:</b> 1 January 2026 &nbsp;·&nbsp; <b>Applies to:</b> Destnly website &amp; mobile apps</div>
+</div></header>
 
-<main class="layout">
-  <aside class="toc">
-    <div class="toc-title">On this page</div>
-    <a href="#collect">1. Information We Collect</a>
-    <a href="#photos">2. Profile Photos & Face Detection</a>
-    <a href="#use">3. How We Use Information</a>
-    <a href="#sources">4. Sources of Information</a>
-    <a href="#profiles">5. Profiles & Shared Content</a>
-    <a href="#circle">6. Circle & User Content</a>
-    <a href="#payments">7. Payments</a>
-    <a href="#communications">8. Communications</a>
-    <a href="#sharing">9. Sharing & Disclosure</a>
-    <a href="#retention">10. Retention & Security</a>
-    <a href="#safety">11. Safety, Reports & Blocking</a>
-    <a href="#age">12. Age Eligibility</a>
-    <a href="#rights">13. Privacy Choices & Rights</a>
-    <a href="#third-party">14. Third-Party Services</a>
-    <a href="#cookies">15. Cookies</a>
-    <a href="#changes">16. Changes</a>
-    <a href="#contact">17. Contact</a>
-  </aside>
-
-  <article class="policy">
-    <div class="policy-inner">
+<!-- CONTENT -->
+<main><div class="wrap"><div class="lp">
+    <aside class="lp-nav">
+      <h4>Legal</h4>
+      <a href="privacy.html" class="on"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Privacy Policy</a>
+      <a href="terms.html"><svg viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>Terms &amp; Conditions</a>
+      <a href="child-safety.html"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Child Safety</a>
+      <a href="account-deletion.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M17 5l4 4M21 5l-4 4"/></svg>Account Deletion</a>
+      <div class="help">Questions about any of these policies? Email <a href="mailto:contact@destnly.com">contact@destnly.com</a>.</div>
+    </aside>
+    <article class="lp-body">
       <p class="intro">Destnly ("Company", "we", "our", "us") is a dating, matchmaking, and social community platform available through its website and mobile applications. We respect your privacy and are committed to protecting the personal information of users ("User", "you", "your") who access or use our Platform.</p>
       <p class="intro">By accessing or using Destnly, you agree to the collection and use of information in accordance with this Privacy Policy and our Terms of Use.</p>
+      <div class="notice"><div class="ic">✓</div><div><strong>Your choices matter.</strong><br>You can manage your account, use available privacy controls, report or block users, and request account deletion through Destnly or by contacting us.</div></div>
 
-      <div class="notice">
-        <div class="notice-icon">✓</div>
-        <div><strong>Your choices matter.</strong><br/>You can manage your account, use available privacy controls, report or block users, and request account deletion through Destnly or by contacting us.</div>
+      <h2>1. Information We Collect</h2>
+      <p>We collect information needed to provide, personalize, secure, and improve Destnly.</p>
+      <h3>a) Personally Identifiable Information (PII)</h3>
+      <ul>
+        <li>Name</li><li>Email address</li><li>Phone number</li><li>Age and gender</li>
+        <li>Location and address</li><li>Profile details and preferences</li>
+        <li>Photographs, videos, and other content voluntarily shared by you</li>
+        <li>Payment and billing information, where applicable, processed through third-party payment gateways</li>
+      </ul>
+      <h3>b) Non-Personally Identifiable Information (Non-PII)</h3>
+      <ul>
+        <li>Browser type and version</li><li>IP address</li><li>Device identifiers and operating system information</li>
+        <li>App usage data and interaction logs</li><li>Date/time stamps and referral URLs</li>
+        <li>Technical and diagnostic information</li>
+      </ul>
+
+      <h2>2. Profile Photos &amp; Basic Face Detection</h2>
+      <p>Destnly allows users to upload a profile photograph as part of their dating profile. We may use basic face detection on an uploaded profile photograph to determine whether a visible face is present and to help provide an appropriate profile-photo experience.</p>
+      <div class="callout"><strong>What this means</strong><p>Destnly's basic face detection is used to improve the profile-photo experience. It is <strong>not</strong> used for facial recognition, facial identification, biometric identification, authentication, or face matching against another person or external database.</p></div>
+      <p>The uploaded photograph itself is part of the user's profile and may be displayed to other users in accordance with Destnly's functionality, profile visibility settings, and Terms of Use.</p>
+      <p>Basic face detection is not used for advertising or marketing profiling.</p>
+
+      <h2>3. How We Use Information</h2>
+      <p>We may use information collected from users for the following purposes:</p>
+      <div class="cards">
+        <div><strong>Profiles &amp; matching</strong>Create and manage profiles, matches, recommendations, and compatibility experiences.</div>
+        <div><strong>Communication</strong>Enable messages, interactions, notifications, and other requested features.</div>
+        <div><strong>Community</strong>Support Circle communities, posts, questions, polls, media, and moderation.</div>
+        <div><strong>Safety &amp; security</strong>Prevent fraud, fake profiles, harassment, abuse, and unlawful activity.</div>
+        <div><strong>Payments</strong>Process payments and subscriptions where applicable.</div>
+        <div><strong>Improvement</strong>Conduct analytics, behavioral insights, research, and service improvements.</div>
       </div>
+      <ul>
+        <li>Sending promotional or marketing communications where permitted, with applicable opt-out options</li>
+        <li>Receiving and investigating reports of inappropriate users or content</li>
+        <li>Enforcing community guidelines, Terms of Use, and other policies</li>
+        <li>Enforcing legal rights and complying with applicable laws and regulations</li>
+      </ul>
 
-      <section id="collect">
-        <h2>1. Information We Collect</h2>
-        <p>We collect information needed to provide, personalize, secure, and improve Destnly.</p>
-        <h3>a) Personally Identifiable Information (PII)</h3>
-        <ul>
-          <li>Name</li><li>Email address</li><li>Phone number</li><li>Age and gender</li>
-          <li>Location and address</li><li>Profile details and preferences</li>
-          <li>Photographs, videos, and other content voluntarily shared by you</li>
-          <li>Payment and billing information, where applicable, processed through third-party payment gateways</li>
-        </ul>
-        <h3>b) Non-Personally Identifiable Information (Non-PII)</h3>
-        <ul>
-          <li>Browser type and version</li><li>IP address</li><li>Device identifiers and operating system information</li>
-          <li>App usage data and interaction logs</li><li>Date/time stamps and referral URLs</li>
-          <li>Technical and diagnostic information</li>
-        </ul>
-      </section>
+      <h2>4. Sources of Information</h2>
+      <p>We collect information directly from users when they create an account, complete their profile, upload photographs or videos, communicate with other users, create or join communities, create posts, questions or polls, report or block another user, or otherwise use Destnly.</p>
+      <p>Our servers may automatically collect information such as IP address, browser type, Internet service provider, pages visited, date/time stamps, click data, device information, application usage information, and technical information for analytics, functionality, security, and service improvement.</p>
+      <p>We use cookies and similar technologies to enhance functionality and analyze usage. Mobile analytics tools may collect usage and diagnostic data in accordance with their applicable terms and privacy practices.</p>
 
-      <section id="photos">
-        <h2>2. Profile Photos &amp; Basic Face Detection</h2>
-        <p>Destnly allows users to upload a profile photograph as part of their dating profile. We may use basic face detection on an uploaded profile photograph to determine whether a visible face is present and to help provide an appropriate profile-photo experience.</p>
-        <div class="callout">
-          <strong>What this means</strong>
-          <p>Destnly's basic face detection is used to improve the profile-photo experience. It is <strong>not</strong> used for facial recognition, facial identification, biometric identification, authentication, or face matching against another person or external database.</p>
-        </div>
-        <p>The uploaded photograph itself is part of the user's profile and may be displayed to other users in accordance with Destnly's functionality, profile visibility settings, and Terms of Use.</p>
-        <p>Basic face detection is not used for advertising or marketing profiling.</p>
-      </section>
+      <h2>5. User Profiles, Matches &amp; Shared Content</h2>
+      <ul>
+        <li>Profile information may be visible to other Destnly users depending on privacy settings and Platform functionality.</li>
+        <li>Photos and other profile content may be shown to matched or other appropriate users as part of the Platform's functionality.</li>
+        <li>Users are responsible for content they voluntarily upload or share.</li>
+        <li>Contact details are not intentionally made publicly visible to other users without the user's consent, except where required by law or necessary to provide a requested service.</li>
+        <li>Users may report inappropriate users or content using reporting functionality available within the application.</li>
+        <li>Users may block other users using blocking functionality available within the application.</li>
+      </ul>
 
-      <section id="use">
-        <h2>3. How We Use Information</h2>
-        <p>We may use information collected from users for the following purposes:</p>
-        <div class="grid">
-          <div class="info-card"><strong>Profiles & matching</strong><span>Create and manage profiles, matches, recommendations, and compatibility experiences.</span></div>
-          <div class="info-card"><strong>Communication</strong><span>Enable messages, interactions, notifications, and other requested features.</span></div>
-          <div class="info-card"><strong>Community</strong><span>Support Circle communities, posts, questions, polls, media, and moderation.</span></div>
-          <div class="info-card"><strong>Safety & security</strong><span>Prevent fraud, fake profiles, harassment, abuse, and unlawful activity.</span></div>
-          <div class="info-card"><strong>Payments</strong><span>Process payments and subscriptions where applicable.</span></div>
-          <div class="info-card"><strong>Improvement</strong><span>Conduct analytics, behavioral insights, research, and service improvements.</span></div>
-        </div>
-        <ul>
-          <li>Sending promotional or marketing communications where permitted, with applicable opt-out options</li>
-          <li>Receiving and investigating reports of inappropriate users or content</li>
-          <li>Enforcing community guidelines, Terms of Use, and other policies</li>
-          <li>Enforcing legal rights and complying with applicable laws and regulations</li>
-        </ul>
-      </section>
+      <h2>6. Circle &amp; User-Generated Content</h2>
+      <p>Destnly includes community features such as <strong>Circle</strong>, where users may create and interact with user-generated content.</p>
+      <p>User-generated content may include:</p>
+      <ul><li>Text posts</li><li>Questions</li><li>Polls</li><li>Photographs and videos</li><li>Comments and other voluntarily submitted content</li></ul>
+      <p>Users are responsible for the content they submit. Destnly may review, moderate, restrict, or remove content that violates our Terms of Use, Community Guidelines, or applicable law.</p>
+      <p>Users can report inappropriate content or users through the reporting functionality and can block other users through the blocking functionality. Destnly may remove content, restrict functionality, suspend accounts, or terminate accounts where appropriate.</p>
 
-      <section id="sources">
-        <h2>4. Sources of Information</h2>
-        <p>We collect information directly from users when they create an account, complete their profile, upload photographs or videos, communicate with other users, create or join communities, create posts, questions or polls, report or block another user, or otherwise use Destnly.</p>
-        <p>Our servers may automatically collect information such as IP address, browser type, Internet service provider, pages visited, date/time stamps, click data, device information, application usage information, and technical information for analytics, functionality, security, and service improvement.</p>
-        <p>We use cookies and similar technologies to enhance functionality and analyze usage. Mobile analytics tools may collect usage and diagnostic data in accordance with their applicable terms and privacy practices.</p>
-      </section>
+      <h2>7. Payments &amp; Transactions</h2>
+      <ul>
+        <li>Payments are processed through applicable third-party payment gateways.</li>
+        <li>Destnly does not store full payment-card details where payment processing is handled by third-party payment providers.</li>
+        <li>Limited billing and transaction information may be retained for transaction processing, accounting, fraud prevention, legal, or regulatory requirements.</li>
+        <li>Third-party payment providers may process payment information according to their own privacy policies and terms.</li>
+      </ul>
 
-      <section id="profiles">
-        <h2>5. User Profiles, Matches &amp; Shared Content</h2>
-        <ul>
-          <li>Profile information may be visible to other Destnly users depending on privacy settings and Platform functionality.</li>
-          <li>Photos and other profile content may be shown to matched or other appropriate users as part of the Platform's functionality.</li>
-          <li>Users are responsible for content they voluntarily upload or share.</li>
-          <li>Contact details are not intentionally made publicly visible to other users without the user's consent, except where required by law or necessary to provide a requested service.</li>
-          <li>Users may report inappropriate users or content using reporting functionality available within the application.</li>
-          <li>Users may block other users using blocking functionality available within the application.</li>
-        </ul>
-      </section>
+      <h2>8. Communications</h2>
+      <p>We may contact you via email, SMS, push notifications, or in-app notifications for account verification, security alerts, service updates, transactions, support, or other service-related purposes.</p>
+      <p>Service-related communications may be necessary for the operation and security of your account. Where permitted, we may also send promotional or marketing communications, with applicable opt-out options.</p>
 
-      <section id="circle">
-        <h2>6. Circle &amp; User-Generated Content</h2>
-        <p>Destnly includes community features such as <strong>Circle</strong>, where users may create and interact with user-generated content.</p>
-        <p>User-generated content may include:</p>
-        <ul><li>Text posts</li><li>Questions</li><li>Polls</li><li>Photographs and videos</li><li>Comments and other voluntarily submitted content</li></ul>
-        <p>Users are responsible for the content they submit. Destnly may review, moderate, restrict, or remove content that violates our Terms of Use, Community Guidelines, or applicable law.</p>
-        <p>Users can report inappropriate content or users through the reporting functionality and can block other users through the blocking functionality. Destnly may remove content, restrict functionality, suspend accounts, or terminate accounts where appropriate.</p>
-      </section>
+      <h2>9. Sharing &amp; Disclosure of Information</h2>
+      <p><strong>Destnly does not sell personal data.</strong></p>
+      <p>Information may be shared when reasonably necessary to operate, secure, or improve the Platform, including with:</p>
+      <ul>
+        <li>Other users where information is intended to be visible through the Platform</li>
+        <li>Service providers that assist with hosting, storage, analytics, communications, security, payments, or other Platform operations</li>
+        <li>Legal authorities where required by applicable law or legal process</li>
+        <li>Professional advisers or service providers where reasonably necessary</li>
+        <li>Parties involved in a merger, acquisition, restructuring, financing, or other business transfer, subject to applicable privacy requirements</li>
+      </ul>
+      <p>Service providers may process information on behalf of Destnly as necessary to provide their services and are expected to maintain appropriate security and confidentiality measures.</p>
+      <p>Destnly does not sell profile photographs or information obtained through basic face detection for advertising or other commercial purposes.</p>
 
-      <section id="payments">
-        <h2>7. Payments &amp; Transactions</h2>
-        <ul>
-          <li>Payments are processed through applicable third-party payment gateways.</li>
-          <li>Destnly does not store full payment-card details where payment processing is handled by third-party payment providers.</li>
-          <li>Limited billing and transaction information may be retained for transaction processing, accounting, fraud prevention, legal, or regulatory requirements.</li>
-          <li>Third-party payment providers may process payment information according to their own privacy policies and terms.</li>
-        </ul>
-      </section>
+      <h2>10. Data Retention &amp; Security</h2>
+      <p>Data is retained only as reasonably necessary to provide the Platform, maintain account functionality, prevent fraud or abuse, resolve disputes, enforce our Terms of Use, and comply with applicable legal or regulatory requirements.</p>
+      <h3>Account &amp; Profile Deletion</h3>
+      <p>When a user deletes their Destnly profile or account:</p>
+      <ul>
+        <li>The account deletion process is initiated.</li>
+        <li>The user's profile is removed from active use.</li>
+        <li>Associated profile information and profile photographs are scheduled for deletion.</li>
+        <li>User-generated content associated with the account is also scheduled for deletion, subject to applicable legal or security requirements.</li>
+        <li>Personal information associated with the deleted profile is deleted within <strong>30 days</strong>, subject to information that may need to be retained where required by applicable law, security, fraud prevention, or regulatory requirements.</li>
+      </ul>
+      <p>During the deletion period, a deleted profile is not intended to remain available as an active user profile.</p>
+      <p>For step-by-step instructions, see our <a href="account-deletion.html">Account Deletion</a> page.</p>
+      <h3>Security</h3>
+      <p>We use reasonable technical, administrative, and organizational security measures designed to protect personal information against unauthorized access, alteration, disclosure, misuse, or destruction. However, no method of transmission or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
 
-      <section id="communications">
-        <h2>8. Communications</h2>
-        <p>We may contact you via email, SMS, push notifications, or in-app notifications for account verification, security alerts, service updates, transactions, support, or other service-related purposes.</p>
-        <p>Service-related communications may be necessary for the operation and security of your account. Where permitted, we may also send promotional or marketing communications, with applicable opt-out options.</p>
-      </section>
+      <h2>11. User Safety, Reporting &amp; Blocking</h2>
+      <p>Destnly is committed to maintaining a safe environment for users.</p>
+      <ul>
+        <li>Users can report inappropriate users.</li>
+        <li>Users can report inappropriate posts or other user-generated content.</li>
+        <li>Users can report violations of our Terms of Use or Community Guidelines.</li>
+        <li>Users can block other users to prevent unwanted interactions.</li>
+      </ul>
+      <p>Destnly may review reports and take appropriate action, including removing content, restricting functionality, suspending accounts, or terminating accounts.</p>
 
-      <section id="sharing">
-        <h2>9. Sharing &amp; Disclosure of Information</h2>
-        <p><strong>Destnly does not sell personal data.</strong></p>
-        <p>Information may be shared when reasonably necessary to operate, secure, or improve the Platform, including with:</p>
-        <ul>
-          <li>Other users where information is intended to be visible through the Platform</li>
-          <li>Service providers that assist with hosting, storage, analytics, communications, security, payments, or other Platform operations</li>
-          <li>Legal authorities where required by applicable law or legal process</li>
-          <li>Professional advisers or service providers where reasonably necessary</li>
-          <li>Parties involved in a merger, acquisition, restructuring, financing, or other business transfer, subject to applicable privacy requirements</li>
-        </ul>
-        <p>Service providers may process information on behalf of Destnly as necessary to provide their services and are expected to maintain appropriate security and confidentiality measures.</p>
-        <p>Destnly does not sell profile photographs or information obtained through basic face detection for advertising or other commercial purposes.</p>
-      </section>
+      <h2>12. Age Eligibility</h2>
+      <p>Destnly is strictly for individuals aged <strong>18 years and above</strong>. We do not knowingly permit individuals under the age of 18 to use the Platform.</p>
 
-      <section id="retention">
-        <h2>10. Data Retention &amp; Security</h2>
-        <p>Data is retained only as reasonably necessary to provide the Platform, maintain account functionality, prevent fraud or abuse, resolve disputes, enforce our Terms of Use, and comply with applicable legal or regulatory requirements.</p>
-        <h3>Account &amp; Profile Deletion</h3>
-        <p>When a user deletes their Destnly profile or account:</p>
-        <ul>
-          <li>The account deletion process is initiated.</li>
-          <li>The user's profile is removed from active use.</li>
-          <li>Associated profile information and profile photographs are scheduled for deletion.</li>
-          <li>User-generated content associated with the account is also scheduled for deletion, subject to applicable legal or security requirements.</li>
-          <li>Personal information associated with the deleted profile is deleted within <strong>30 days</strong>, subject to information that may need to be retained where required by applicable law, security, fraud prevention, or regulatory requirements.</li>
-        </ul>
-        <p>During the deletion period, a deleted profile is not intended to remain available as an active user profile.</p>
-        <h3>Security</h3>
-        <p>We use reasonable technical, administrative, and organizational security measures designed to protect personal information against unauthorized access, alteration, disclosure, misuse, or destruction. However, no method of transmission or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
-      </section>
+      <h2>13. Privacy Choices &amp; Rights</h2>
+      <p>Depending on applicable law, users may have rights regarding their personal information, including:</p>
+      <ul>
+        <li>Requesting access to personal information</li>
+        <li>Requesting correction of inaccurate information</li>
+        <li>Requesting deletion of their account and associated information</li>
+        <li>Requesting information about how their data is processed</li>
+        <li>Withdrawing consent where processing is based on consent</li>
+        <li>Opting out of promotional communications where applicable</li>
+      </ul>
+      <p>Users may exercise applicable rights through available account settings or by contacting us using the contact information below.</p>
 
-      <section id="safety">
-        <h2>11. User Safety, Reporting &amp; Blocking</h2>
-        <p>Destnly is committed to maintaining a safe environment for users.</p>
-        <ul>
-          <li>Users can report inappropriate users.</li>
-          <li>Users can report inappropriate posts or other user-generated content.</li>
-          <li>Users can report violations of our Terms of Use or Community Guidelines.</li>
-          <li>Users can block other users to prevent unwanted interactions.</li>
-        </ul>
-        <p>Destnly may review reports and take appropriate action, including removing content, restricting functionality, suspending accounts, or terminating accounts.</p>
-      </section>
+      <h2>14. Third-Party Services</h2>
+      <p>Destnly may use third-party service providers to support functions such as:</p>
+      <ul>
+        <li>Cloud hosting and storage</li><li>Analytics</li><li>Authentication</li>
+        <li>Communications and notifications</li><li>Payment processing</li>
+        <li>Security and fraud prevention</li><li>Technical infrastructure</li>
+      </ul>
+      <p>These providers may process information on behalf of Destnly as necessary to provide their services. Their processing may also be governed by applicable agreements and their respective privacy practices.</p>
 
-      <section id="age">
-        <h2>12. Age Eligibility</h2>
-        <p>Destnly is strictly for individuals aged <strong>18 years and above</strong>. We do not knowingly permit individuals under the age of 18 to use the Platform.</p>
-      </section>
+      <h2>15. Cookies &amp; Similar Technologies</h2>
+      <p>Destnly may use cookies and similar technologies on its website and applicable technologies within its mobile applications to maintain functionality, remember preferences, analyze usage, improve Platform performance, and maintain security.</p>
+      <p>Users may be able to manage cookies through their browser or applicable device settings.</p>
 
-      <section id="rights">
-        <h2>13. Privacy Choices &amp; Rights</h2>
-        <p>Depending on applicable law, users may have rights regarding their personal information, including:</p>
-        <ul>
-          <li>Requesting access to personal information</li>
-          <li>Requesting correction of inaccurate information</li>
-          <li>Requesting deletion of their account and associated information</li>
-          <li>Requesting information about how their data is processed</li>
-          <li>Withdrawing consent where processing is based on consent</li>
-          <li>Opting out of promotional communications where applicable</li>
-        </ul>
-        <p>Users may exercise applicable rights through available account settings or by contacting us using the contact information below.</p>
-      </section>
+      <h2>16. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes to our services, technology, legal requirements, or privacy practices.</p>
+      <p>The updated policy will be made available through the Platform and/or our website. The effective date at the beginning of this Privacy Policy indicates when the current version became effective.</p>
+      <p>Continued use of the Platform after an update becomes effective constitutes acceptance of the revised policy where permitted by applicable law.</p>
 
-      <section id="third-party">
-        <h2>14. Third-Party Services</h2>
-        <p>Destnly may use third-party service providers to support functions such as:</p>
-        <ul>
-          <li>Cloud hosting and storage</li><li>Analytics</li><li>Authentication</li>
-          <li>Communications and notifications</li><li>Payment processing</li>
-          <li>Security and fraud prevention</li><li>Technical infrastructure</li>
-        </ul>
-        <p>These providers may process information on behalf of Destnly as necessary to provide their services. Their processing may also be governed by applicable agreements and their respective privacy practices.</p>
-      </section>
+      <h2>17. Contact Us</h2>
+      <div class="contact">
+        <h3>Questions or privacy requests?</h3>
+        <p>If you have questions, concerns, privacy requests, safety concerns, or requests regarding this Privacy Policy or your personal information, please contact us.</p>
+        <p style="margin-top:10px"><strong>Email:</strong> <a href="mailto:support@destnly.com">support@destnly.com</a><br><strong>Website:</strong> <a href="https://www.destnly.com">www.destnly.com</a></p>
+      </div>
+      <p class="copy">© 2026 Destnly Private Limited. All rights reserved.</p>
+    </article>
+</div></div></main>
 
-      <section id="cookies">
-        <h2>15. Cookies &amp; Similar Technologies</h2>
-        <p>Destnly may use cookies and similar technologies on its website and applicable technologies within its mobile applications to maintain functionality, remember preferences, analyze usage, improve Platform performance, and maintain security.</p>
-        <p>Users may be able to manage cookies through their browser or applicable device settings.</p>
-      </section>
-
-      <section id="changes">
-        <h2>16. Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time to reflect changes to our services, technology, legal requirements, or privacy practices.</p>
-        <p>The updated policy will be made available through the Platform and/or our website. The effective date at the beginning of this Privacy Policy indicates when the current version became effective.</p>
-        <p>Continued use of the Platform after an update becomes effective constitutes acceptance of the revised policy where permitted by applicable law.</p>
-      </section>
-
-      <section id="contact">
-        <h2>17. Contact Us</h2>
-        <div class="contact">
-          <h3>Questions or privacy requests?</h3>
-          <p>If you have questions, concerns, privacy requests, safety concerns, or requests regarding this Privacy Policy or your personal information, please contact us.</p>
-          <p><strong>Email:</strong> <a href="mailto:support@destnly.com">support@destnly.com</a><br/>
-          <strong>Website:</strong> <a href="https://www.destnly.com">www.destnly.com</a></p>
-        </div>
-        <p class="copy-note">© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
-      </section>
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="grid">
+    <div>
+      <div class="big">Find the connection<br><span>meant for you.</span></div>
+      <div class="social">
+        <a href="https://x.com/destnly_handle?s=11" target="_blank" rel="noopener" aria-label="Destnly on X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-6.6L6 22H2.9l7.5-8.6L2.5 2h6.6l4.5 6zM17.8 20h1.7L7.3 3.9H5.4z"/></svg></a>
+        <a href="https://www.instagram.com/destnly_official?stkn=MWhlbHhtbW5sdHd3cA%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" aria-label="Destnly on Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM21.9 8c-.1-1.6-.4-3-1.6-4.2S17.6 2.3 16 2.2C14.4 2 9.6 2 8 2.2 6.4 2.3 5 2.6 3.8 3.8S2.3 6.4 2.2 8C2 9.6 2 14.4 2.2 16c.1 1.6.4 3 1.6 4.2s2.6 1.5 4.2 1.6c1.6.2 6.4.2 8 0 1.6-.1 3-.4 4.2-1.6s1.5-2.6 1.6-4.2c.2-1.6.2-6.4.1-8zm-2.2 9.9a3.2 3.2 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.9.4s-4.6.1-5.9-.4a3.2 3.2 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.9s-.1-4.6.4-5.9a3.2 3.2 0 0 1 1.8-1.8c1.3-.5 4.3-.4 5.9-.4s4.6-.1 5.9.4a3.2 3.2 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.9s.1 4.6-.4 5.9z"/></svg></a>
+        <a href="https://www.linkedin.com/in/destnly-main-a7b57238b/" target="_blank" rel="noopener" aria-label="Destnly on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3zM6.5 8.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.7 13 12.7 14.3V19h-3V9.5h2.9v1.3a3.1 3.1 0 0 1 2.8-1.5c3 0 3.6 2 3.6 4.6z"/></svg></a>
+        <a href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener" aria-label="Get Destnly on Google Play"><svg viewBox="0 0 24 24"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2zM16.1 15.6l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.7 2.1zM16.2 15.5 13 12.3l-9.4 9.4c.4.4.9.4 1.6.1l11-6.3M16.2 8.5l-11-6.3c-.7-.4-1.2-.3-1.6.1L13 12z"/></svg></a>
+      </div>
     </div>
-  </article>
-</main>
-
-<footer>
-  <p>© 2026 Nexquard Technology Pvt Ltd. All rights reserved.</p>
-  <div>
-    <a href="privacy.html">Privacy</a>
-    <a href="terms.html">Terms</a>
-    <a href="account-deletion.html">Account Deletion</a>
-    <a href="child-safety.html">Child Safety</a>
+    <div><h4>Menu</h4><ul><li><a href="destnly-website-circle.html#about">About</a></li><li><a href="destnly-website-circle.html#circle">Circle</a></li><li><a href="destnly-website-circle.html#features">Features</a></li><li><a href="destnly-website-circle.html#safety">Safety</a></li><li><a href="#">Contact Us</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="child-safety.html">Child Safety</a></li><li><a href="account-deletion.html">Account Deletion</a></li></ul></div>
   </div>
-</footer>
+  <div class="rule"><small>© 2026 Destnly Private Limited</small><a class="btn solid sm" href="https://play.google.com/store/apps/details?id=com.destnlyapp" target="_blank" rel="noopener">Download Now ↓</a></div>
+  <div class="word">Destnly</div>
+</div></footer>
+
 </body>
 </html>
