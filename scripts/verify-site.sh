@@ -50,6 +50,40 @@ fi
 python3 -m json.tool site.webmanifest >/dev/null
 python3 - <<'PY'
 from html.parser import HTMLParser
+from pathlib import Path
+import xml.etree.ElementTree as ET
+
+
+routes = ('privacy', 'terms', 'child-safety', 'account-deletion', 'contact')
+
+
+class CanonicalParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.canonicals = []
+
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        if tag == 'link' and values.get('rel') == 'canonical':
+            self.canonicals.append(values.get('href'))
+
+
+for route in routes:
+    expected = f'https://destnly.com/{route}/'
+    for page in (Path(f'{route}.html'), Path(route) / 'index.html'):
+        parser = CanonicalParser()
+        parser.feed(page.read_text(encoding='utf-8'))
+        assert parser.canonicals == [expected], f'{page} canonical is {parser.canonicals}, expected {expected}'
+
+namespace = {'sitemap': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+sitemap_urls = {
+    node.text for node in ET.parse('sitemap.xml').getroot().findall('sitemap:url/sitemap:loc', namespace)
+}
+expected_urls = {'https://destnly.com/', *(f'https://destnly.com/{route}/' for route in routes)}
+assert sitemap_urls == expected_urls, f'unexpected sitemap URLs: {sorted(sitemap_urls)}'
+PY
+python3 - <<'PY'
+from html.parser import HTMLParser
 import json
 
 
@@ -60,6 +94,7 @@ class HomepageParser(HTMLParser):
         self.meta = []
         self.canonicals = []
         self.json_ld = []
+        self.images = []
         self._in_title = False
         self._in_json_ld = False
         self._json_buffer = []
@@ -76,6 +111,8 @@ class HomepageParser(HTMLParser):
         elif tag == 'script' and values.get('type') == 'application/ld+json':
             self._in_json_ld = True
             self._json_buffer = []
+        elif tag == 'img':
+            self.images.append(values)
 
     def handle_data(self, data):
         if self._in_json_ld:
@@ -100,6 +137,7 @@ assert len(descriptions) == 1, f'expected one meta description, found {len(descr
 robots = ' '.join(item.get('content', '').lower() for item in parser.meta if item.get('name') == 'robots')
 assert 'noindex' not in robots, 'homepage contains noindex'
 assert len(parser.json_ld) == 1, f'expected one JSON-LD block, found {len(parser.json_ld)}'
+assert all(image.get('alt', '').strip() for image in parser.images), 'homepage contains an image with missing or empty alt text'
 schema = parser.json_ld[0]
 assert schema.get('@context') == 'https://schema.org'
 assert schema.get('@type') == 'MobileApplication'
@@ -190,15 +228,59 @@ PY
     exit 1
   fi
 
+  canonical_routes=(privacy terms child-safety account-deletion contact)
+  for route in "${canonical_routes[@]}"; do
+    redirect_headers="$(curl -sS -o /dev/null -D - "$base/$route?source=seo%20audit")"
+    redirect_status="$(awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}' <<< "$redirect_headers")"
+    test "$redirect_status" = "308" || {
+      echo "/$route did not preserve the existing HTTP 308 redirect (returned $redirect_status)" >&2
+      exit 1
+    }
+    redirect_location="$(tr -d '\r' <<< "$redirect_headers" | awk -F': ' 'tolower($1)=="location" {print $2}' | tail -1)"
+    test "$redirect_location" = "/$route/?source=seo%20audit" || {
+      echo "/$route redirect did not preserve its path and query: $redirect_location" >&2
+      exit 1
+    }
+
+    final_headers="$(curl -sS -o /dev/null -D - "$base/$route/")"
+    final_status="$(awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}' <<< "$final_headers")"
+    test "$final_status" = "200" || {
+      echo "/$route/ returned HTTP $final_status instead of a direct 200" >&2
+      exit 1
+    }
+    final_page="$(curl -sS "$base/$route/")"
+    grep -Fq "<link rel=\"canonical\" href=\"https://destnly.com/$route/\">" <<< "$final_page" || {
+      echo "/$route/ does not declare its final trailing-slash canonical" >&2
+      exit 1
+    }
+    grep -Fq "<loc>https://destnly.com/$route/</loc>" <<< "$deployed_sitemap" || {
+      echo "Production sitemap is missing https://destnly.com/$route/" >&2
+      exit 1
+    }
+  done
+
   www_base="${WWW_BASE_URL:-https://www.destnly.com}"
-  redirect_headers="$(curl -sS -o /dev/null -D - "${www_base%/}/privacy?smoke=canonical-host")"
-  redirect_status="$(awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}' <<< "$redirect_headers")"
-  test "$redirect_status" = "301" || { echo "www canonical redirect returned HTTP $redirect_status" >&2; exit 1; }
-  redirect_location="$(tr -d '\r' <<< "$redirect_headers" | awk -F': ' 'tolower($1)=="location" {print $2}' | tail -1)"
-  test "$redirect_location" = 'https://destnly.com/privacy?smoke=canonical-host' || {
-    echo "www canonical redirect location is $redirect_location" >&2
-    exit 1
-  }
+  redirect_cases=(
+    '/|https://destnly.com/'
+    '/privacy|https://destnly.com/privacy'
+    '/contact?source=google|https://destnly.com/contact?source=google'
+    '/privacy%2Fnotice?source=encoded%20path|https://destnly.com/privacy%2Fnotice?source=encoded%20path'
+  )
+  for redirect_case in "${redirect_cases[@]}"; do
+    request_path="${redirect_case%%|*}"
+    expected_location="${redirect_case#*|}"
+    redirect_headers="$(curl -sS -o /dev/null -D - "${www_base%/}${request_path}")"
+    redirect_status="$(awk 'toupper($1) ~ /^HTTP\// {code=$2} END {print code}' <<< "$redirect_headers")"
+    [[ "$redirect_status" == "301" || "$redirect_status" == "308" ]] || {
+      echo "www canonical redirect for $request_path returned HTTP $redirect_status" >&2
+      exit 1
+    }
+    redirect_location="$(tr -d '\r' <<< "$redirect_headers" | awk -F': ' 'tolower($1)=="location" {print $2}' | tail -1)"
+    test "$redirect_location" = "$expected_location" || {
+      echo "www canonical redirect for $request_path points to $redirect_location" >&2
+      exit 1
+    }
+  done
 fi
 
 echo "Website integration checks passed."
