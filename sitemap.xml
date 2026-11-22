@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.destnly.com/</loc></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://destnly.com/</loc></url>
+  <url><loc>https://destnly.com/privacy</loc></url>
+  <url><loc>https://destnly.com/terms</loc></url>
+  <url><loc>https://destnly.com/child-safety</loc></url>
+  <url><loc>https://destnly.com/account-deletion</loc></url>
+  <url><loc>https://destnly.com/contact</loc></url>
+</urlset>

@@ -6,3 +6,20 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/app-ads.txt
+  Content-Type: text/plain; charset=UTF-8
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: noindex
+
+/robots.txt
+  Content-Type: text/plain; charset=UTF-8
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Content-Type: application/xml; charset=UTF-8
+  Cache-Control: public, max-age=3600
+
+/site.webmanifest
+  Content-Type: application/manifest+json; charset=UTF-8
+  Cache-Control: public, max-age=86400

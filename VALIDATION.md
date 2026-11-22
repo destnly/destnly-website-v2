@@ -12,7 +12,7 @@
 **Not independently validated**
 - HTTP route tests and headless Chromium rendering: blocked by networking policy in this build environment (localhost connection refused / blocked by administrator). Test in deployment preview before going live.
 - Mobile Safari / Android WebView render: not tested with real devices.
-- Exact byte-for-byte legal text comparison: origin's HTML was not directly downloadable. Policy text was transcribed from publicly rendered pages. Cloudflare-protected original email addresses could not be recovered; `developer@destnly.com` from Google Play listing was substituted. Verify those addresses and compare legal text with original HTML before production.
+- Exact byte-for-byte legal text comparison: origin's HTML was not directly downloadable. Policy text was transcribed from publicly rendered pages. Cloudflare-protected original email addresses could not be recovered; `contact@destnly.com` from Google Play listing was substituted. Verify those addresses and compare legal text with original HTML before production.
 
 **Deploy**
 - Deploy the contents of this folder as the static website root on Netlify.
