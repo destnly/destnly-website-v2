@@ -11,6 +11,7 @@ required_files=(
   account-deletion/index.html
   contact/index.html
   app-ads.txt
+  90f82d84badf447c990f6daa8ac5b073.txt
   robots.txt
   sitemap.xml
   site.webmanifest
@@ -24,7 +25,13 @@ for file in "${required_files[@]}"; do
 done
 
 expected_seller='google.com, pub-5796870987448664, DIRECT, f08c47fec0942fa0'
+indexnow_key='90f82d84badf447c990f6daa8ac5b073'
 grep -Fxq "$expected_seller" app-ads.txt
+test "$(cat "$indexnow_key.txt")" = "$indexnow_key" || {
+  echo "IndexNow key file content is incorrect" >&2
+  exit 1
+}
+grep -Fq "/$indexnow_key.txt" _headers
 grep -Fq '<link rel="canonical" href="https://destnly.com/">' index.html
 grep -Fq '<title>Destnly | Dating, Daily Vibe & Circles</title>' index.html
 grep -Fq '<meta name="description" content="Meet new people on Destnly. Share your daily vibe, discover interest-based Circles, explore dating profiles, match and start meaningful conversations.">' index.html
@@ -104,7 +111,7 @@ assert schema.get('publisher', {}).get('logo') == 'https://destnly.com/assets/de
 PY
 if [[ -n "${BASE_URL:-}" ]]; then
   base="${BASE_URL%/}"
-  for path in / /privacy /terms /child-safety /account-deletion /contact /robots.txt /sitemap.xml /app-ads.txt /.well-known/assetlinks.json /site.webmanifest; do
+  for path in / /privacy /terms /child-safety /account-deletion /contact /robots.txt /sitemap.xml /app-ads.txt "/$indexnow_key.txt" /.well-known/assetlinks.json /site.webmanifest; do
     status="$(curl -L -sS -o /dev/null -w '%{http_code}' "$base$path")"
     test "$status" = "200" || { echo "$path returned HTTP $status" >&2; exit 1; }
   done
@@ -112,11 +119,25 @@ if [[ -n "${BASE_URL:-}" ]]; then
   content_type="$(curl -sSI "$base/app-ads.txt" | tr -d '\r' | awk -F': ' 'tolower($1)=="content-type" {print tolower($2)}' | tail -1)"
   [[ "$content_type" == text/plain* ]] || { echo "app-ads.txt content type is $content_type" >&2; exit 1; }
   deployed_ads="$(mktemp)"
+  deployed_indexnow="$(mktemp)"
+  indexnow_headers="$(mktemp)"
   deployed_assetlinks="$(mktemp)"
   asset_headers="$(mktemp)"
-  trap 'rm -f "$deployed_ads" "$deployed_assetlinks" "$asset_headers"' EXIT
+  trap 'rm -f "$deployed_ads" "$deployed_indexnow" "$indexnow_headers" "$deployed_assetlinks" "$asset_headers"' EXIT
   curl -sS "$base/app-ads.txt" > "$deployed_ads"
   cmp -s app-ads.txt "$deployed_ads" || { echo "Deployed app-ads.txt differs from the repository" >&2; exit 1; }
+
+  indexnow_status="$(curl -sS -D "$indexnow_headers" -o "$deployed_indexnow" -w '%{http_code}' "$base/$indexnow_key.txt")"
+  test "$indexnow_status" = "200" || { echo "IndexNow key returned HTTP $indexnow_status" >&2; exit 1; }
+  indexnow_content_type="$(tr -d '\r' < "$indexnow_headers" | awk -F': ' 'tolower($1)=="content-type" {print tolower($2)}' | tail -1)"
+  [[ "$indexnow_content_type" == text/plain* ]] || {
+    echo "IndexNow key content type is $indexnow_content_type" >&2
+    exit 1
+  }
+  cmp -s "$indexnow_key.txt" "$deployed_indexnow" || {
+    echo "Deployed IndexNow key body is incorrect" >&2
+    exit 1
+  }
 
   asset_status="$(curl -sS -D "$asset_headers" -o "$deployed_assetlinks" -w '%{http_code}' "$base/.well-known/assetlinks.json")"
   test "$asset_status" = "200" || { echo "assetlinks.json returned HTTP $asset_status" >&2; exit 1; }
