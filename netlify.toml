@@ -1,2 +1,22 @@
 [build]
   publish = "."
+
+# Keep hostname canonicalization at the deployment edge. These rules must stay
+# ahead of any application routes so paths and query strings are preserved.
+[[redirects]]
+  from = "https://www.destnly.com/*"
+  to = "https://destnly.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.destnly.com/*"
+  to = "https://destnly.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://destnly.com/*"
+  to = "https://destnly.com/:splat"
+  status = 301
+  force = true
