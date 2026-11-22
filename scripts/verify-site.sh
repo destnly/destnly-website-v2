@@ -26,6 +26,12 @@ done
 expected_seller='google.com, pub-5796870987448664, DIRECT, f08c47fec0942fa0'
 grep -Fxq "$expected_seller" app-ads.txt
 grep -Fq '<link rel="canonical" href="https://destnly.com/">' index.html
+grep -Fq '<title>Destnly | Dating, Daily Vibe & Circles</title>' index.html
+grep -Fq '<meta name="description" content="Meet new people on Destnly. Share your daily vibe, discover interest-based Circles, explore dating profiles, match and start meaningful conversations.">' index.html
+grep -Fq '<meta property="og:title" content="Destnly — Where Stories Begin">' index.html
+grep -Fq '<meta property="og:description" content="Meet people beyond the swipe. Share your daily vibe, explore Circles, discover matches and start conversations that matter.">' index.html
+grep -Fq '<meta name="twitter:title" content="Destnly — Where Stories Begin">' index.html
+grep -Fq '<meta name="twitter:description" content="Meet people beyond the swipe. Share your daily vibe, explore Circles, discover matches and start conversations that matter.">' index.html
 grep -Fq 'Sitemap: https://destnly.com/sitemap.xml' robots.txt
 grep -Fxq 'destnly.com' CNAME
 grep -Fxq 'https://www.destnly.com/* https://destnly.com/:splat 301!' _redirects
@@ -35,6 +41,67 @@ if grep -Fq 'https://www.destnly.com' index.html robots.txt sitemap.xml; then
 fi
 
 python3 -m json.tool site.webmanifest >/dev/null
+python3 - <<'PY'
+from html.parser import HTMLParser
+import json
+
+
+class HomepageParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.title_count = 0
+        self.meta = []
+        self.canonicals = []
+        self.json_ld = []
+        self._in_title = False
+        self._in_json_ld = False
+        self._json_buffer = []
+
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        if tag == 'title':
+            self.title_count += 1
+            self._in_title = True
+        elif tag == 'meta':
+            self.meta.append(values)
+        elif tag == 'link' and values.get('rel') == 'canonical':
+            self.canonicals.append(values.get('href'))
+        elif tag == 'script' and values.get('type') == 'application/ld+json':
+            self._in_json_ld = True
+            self._json_buffer = []
+
+    def handle_data(self, data):
+        if self._in_json_ld:
+            self._json_buffer.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'title':
+            self._in_title = False
+        elif tag == 'script' and self._in_json_ld:
+            self.json_ld.append(json.loads(''.join(self._json_buffer)))
+            self._in_json_ld = False
+
+
+parser = HomepageParser()
+with open('index.html', encoding='utf-8') as handle:
+    parser.feed(handle.read())
+
+assert parser.title_count == 1, f'expected one title, found {parser.title_count}'
+assert parser.canonicals == ['https://destnly.com/'], f'unexpected canonical tags: {parser.canonicals}'
+descriptions = [item for item in parser.meta if item.get('name') == 'description']
+assert len(descriptions) == 1, f'expected one meta description, found {len(descriptions)}'
+robots = ' '.join(item.get('content', '').lower() for item in parser.meta if item.get('name') == 'robots')
+assert 'noindex' not in robots, 'homepage contains noindex'
+assert len(parser.json_ld) == 1, f'expected one JSON-LD block, found {len(parser.json_ld)}'
+schema = parser.json_ld[0]
+assert schema.get('@context') == 'https://schema.org'
+assert schema.get('@type') == 'MobileApplication'
+assert schema.get('name') == 'Destnly'
+assert schema.get('identifier') == 'com.destnlyapp'
+assert schema.get('url') == 'https://destnly.com/'
+assert schema.get('downloadUrl') == 'https://play.google.com/store/apps/details?id=com.destnlyapp'
+assert schema.get('publisher', {}).get('logo') == 'https://destnly.com/assets/destnly-logo.png'
+PY
 if [[ -n "${BASE_URL:-}" ]]; then
   base="${BASE_URL%/}"
   for path in / /privacy /terms /child-safety /account-deletion /contact /robots.txt /sitemap.xml /app-ads.txt /.well-known/assetlinks.json /site.webmanifest; do
@@ -86,6 +153,14 @@ PY
   homepage="$(curl -sS "$base/")"
   grep -Fq '<link rel="canonical" href="https://destnly.com/">' <<< "$homepage" || {
     echo "Production homepage canonical is not https://destnly.com/" >&2
+    exit 1
+  }
+  grep -Fq '<title>Destnly | Dating, Daily Vibe & Circles</title>' <<< "$homepage" || {
+    echo "Production homepage title is not the expected SEO title" >&2
+    exit 1
+  }
+  grep -Fq '<meta property="og:title" content="Destnly — Where Stories Begin">' <<< "$homepage" || {
+    echo "Production homepage Open Graph title is not the expected SEO title" >&2
     exit 1
   }
   deployed_sitemap="$(curl -sS "$base/sitemap.xml")"
