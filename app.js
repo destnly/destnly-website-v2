@@ -62,3 +62,29 @@ if(film&&matchMedia('(min-width: 761px) and (prefers-reduced-motion: no-preferen
     if(tilt&&hero){hero.addEventListener('pointermove',e=>{const r=tilt.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;if(x<-.5||x>.5||y<-.5||y>.5)return;tilt.style.transform=`perspective(1200px) rotateY(${x*5}deg) rotateX(${-y*5}deg) translate3d(0,0,0)`},{passive:true});hero.addEventListener('pointerleave',()=>{tilt.style.transform=''})}
   }
 })();
+
+// Optional analytics bridge: emits useful events when a host analytics provider is present.
+function destnlyTrack(event,details={}){
+  if(typeof window.gtag==='function')window.gtag('event',event,details);
+  else if(Array.isArray(window.dataLayer))window.dataLayer.push({event,...details});
+  document.dispatchEvent(new CustomEvent('destnly:analytics',{detail:{event,...details}}));
+}
+const milestoneSection=document.querySelector('[data-milestone-section]');
+if(milestoneSection&&'IntersectionObserver'in window){
+  const milestoneObserver=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){destnlyTrack('milestone_section_view',{milestone:'50k_downloads'});milestoneObserver.disconnect()}},{threshold:.35});
+  milestoneObserver.observe(milestoneSection);
+}
+document.querySelector('[data-milestone-story]')?.addEventListener('click',()=>destnlyTrack('milestone_story_click',{milestone:'50k_downloads'}));
+if(document.body.dataset.storyPage){destnlyTrack('story_view',{story:document.body.dataset.storyPage});}
+document.querySelector('[data-story-download]')?.addEventListener('click',()=>destnlyTrack('story_download_click',{story:document.body.dataset.storyPage||'unknown'}));
+const shareStory=document.querySelector('[data-share-story]');
+shareStory?.addEventListener('click',async()=>{
+  const status=document.querySelector('.story-share-status');
+  const shareData={title:shareStory.dataset.shareTitle||document.title,url:location.href};
+  try{
+    if(navigator.share){await navigator.share(shareData);if(status)status.textContent='Shared.';}
+    else if(navigator.clipboard){await navigator.clipboard.writeText(location.href);if(status)status.textContent='Link copied.';}
+    else{throw new Error('Sharing is unavailable');}
+    destnlyTrack('story_share',{story:document.body.dataset.storyPage||'unknown',method:navigator.share?'native':'clipboard'});
+  }catch(error){if(error?.name!=='AbortError'&&status)status.textContent='Copy the link from your browser to share.';}
+});
